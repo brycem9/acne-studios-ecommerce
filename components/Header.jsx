@@ -23,17 +23,19 @@ function Header() {
             KYLIE JENNER FW23 DENIM
           </h1>
         )}{" "}
-        <div className="w-full h-full"></div>
-          <img
-            className="w-full cursor-pointer  h-full pt-3"
-            src={"/assets/kylie/denim-d.jpg"}
-            alt="Kylie Jenner FW23 denim"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          />
-      </div>
 
-      <div>
+        <img
+          className="w-full cursor-pointer  h-full pt-3"
+          src={"/assets/kylie/denim-d.jpg"}
+          alt="Kylie Jenner FW23 denim"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
+      <div className="">
+      <h1 className="text-xs sticky pl-3 z-10 left-0 top-10 max-w-[20%] ">
+            KYLIE JENNER FW23 DENIM
+          </h1>
         <img
           className="w-full h-full "
           src={"/assets/kylie/denim2-d.jpg"}

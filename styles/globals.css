@@ -11,6 +11,9 @@
     box-sizing: border-box;
 }
 
+ul {
+    text-transform: uppercase;
+}
 
 nav {
     @apply text-xs tracking-wider
@@ -21,5 +24,15 @@ nav {
 }
 
 .acne-splash {
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    
+    
 }
+
+
+.footer--link {
+   @apply text-xs text-[#0018A8] pt-0.5 pb-0.5 
+}
+
+
+
