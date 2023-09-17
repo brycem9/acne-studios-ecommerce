@@ -2,37 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-    font-family: helvetica-now;
-    src: url();
+  font-family: helvetica-now;
+  src: url();
 }
 
 * {
-    font-family: helvetica-now, sans-serif;
-    box-sizing: border-box;
+  font-family: helvetica-now, sans-serif;
+  box-sizing: border-box;
 }
 
 ul {
-    text-transform: uppercase;
+  text-transform: uppercase;
+}
+
+body {
+    overflow-x: hidden
 }
 
 nav {
-    @apply text-xs tracking-wider
+  @apply text-xs tracking-wider;
 }
 
 .nav--button {
-    @apply pl-2 ml-4
+  @apply pl-2 ml-4;
 }
 
 .acne-splash {
-    transform: translate(-50%, -50%);
-    
-    
+  transform: translate(-50%, -50%);
 }
-
 
 .footer--link {
-   @apply text-xs text-[#0018A8] pt-0.5 pb-0.5 
+  @apply text-xs text-[#0018A8] pt-0.5 pb-0.5;
 }
 
-
-
+.img-container {
+    position: relative;
+    width: 100vw;
+    height: 0; /* Set initial height to 0 */
+    padding-bottom: calc(100% / (16 / 9)); /* Maintain aspect ratio (16:9) */
+  
+    /* This is the pseudo-element for the background image */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("/assets/kylie/kylie-d.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+.img-container2 {
+    position: relative;
+    width: 100vw;
+    height: 0; /* Set initial height to 0 */
+    padding-bottom: calc(100% / (16 / 9)); /* Maintain aspect ratio (16:9) */
+  
+    /* This is the pseudo-element for the background image */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("/assets/kylie/denim2-d.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  

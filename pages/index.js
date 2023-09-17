@@ -9,10 +9,10 @@ export default function Home() {
     <main>
       <Navbar />
       <div className="flex justify-center">
-        {/* <img
-          className="acne-splash w-[75%] fixed top-[50%] left-[50%] mix-blend-luminosity"
+        <img
+          className="acne-splash w-[75%] z-30 fixed top-[50%] left-[50%] mix-blend-luminosity"
           src="/assets/logos/denim-logo.png"
-        /> */}
+        />
         
       </div>
       <Header />
