@@ -38,10 +38,10 @@ nav {
 .img-container {
     position: relative;
     width: 100vw;
-    height: 0; /* Set initial height to 0 */
-    padding-bottom: calc(100% / (16 / 9)); /* Maintain aspect ratio (16:9) */
+    height: 0;
+    padding-bottom: calc(100% / (16 / 9));
   
-    /* This is the pseudo-element for the background image */
+   
     &::before {
       content: "";
       position: absolute;
@@ -52,15 +52,19 @@ nav {
       background-image: url("/assets/kylie/kylie-d.jpg");
       background-size: cover;
       background-repeat: no-repeat;
+      z-index: -1;
     }
   }
+
+ 
+
+
 .img-container2 {
     position: relative;
     width: 100vw;
-    height: 0; /* Set initial height to 0 */
-    padding-bottom: calc(100% / (16 / 9)); /* Maintain aspect ratio (16:9) */
+    height: 0; 
+    padding-bottom: calc(100% / (16 / 9));
   
-    /* This is the pseudo-element for the background image */
     &::before {
       content: "";
       position: absolute;

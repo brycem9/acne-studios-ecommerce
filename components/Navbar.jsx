@@ -26,7 +26,7 @@ function Navbar() {
             <MagnifyingGlassIcon className="w-4 text-gray-500" />
             <input
               placeholder="SEARCH"
-              className="hover p-3  w-[350px] h-[34px]"
+              className="hover p-3 focus:outline-none w-[350px] h-[34px]"
               type="text"
             />
           </div>
