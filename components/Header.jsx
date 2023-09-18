@@ -24,44 +24,45 @@ function Header() {
     <div>
       <a href="">
         <div
-          className="mt-2 "
+          className="mt-1 "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           {hovered ? (
-            <h1 className="text-xs sticky pb-2 pl-3 z-10 left-0 top-11">
+            <h1 className="text-xs tracking-wider sticky pb-2 pl-3 z-10 left-0 top-9">
               KYLIE JENNER FW23 DENIM {">"} SHOP NOW
             </h1>
           ) : (
-            <h1 className="text-xs sticky  pb-2 pl-3 z-10 left-0 top-11 ">
+            <h1 className="text-xs tracking-wider sticky  pb-2 pl-3 z-10 left-0 top-9 ">
               KYLIE JENNER FW23 DENIM
             </h1>
           )}{" "}
-          <div className="img-container"></div>
+          <div className="img-container "></div>
         </div>
       </a>
 
       <div>
-        
         <a href="">
-          <div className="relative" onMouseEnter={handleMouseEnter2}
-            onMouseLeave={handleMouseLeave2}>
-          
-          </div>
-          {hovered2 ? (
-          <h1 className="text-xs sticky pl-3 z-10 left-0 top-11">
-            WOMEN'S NEW ARRIVALS {">"} SHOP NOW
-          </h1>
-        ) : (
-          <h1 className="text-xs sticky pl-3 z-10 left-0  top-11 ">
-            WOMEN'S NEW ARRIVALS
-          </h1>
-        )}{" "}
           <div
-            className="img-container2"
-            
-          ></div>
-          
+            className="relative"
+            onMouseEnter={handleMouseEnter2}
+            onMouseLeave={handleMouseLeave2}
+          >
+            <div className="img-container2">
+              <div className="text-container">
+                {hovered2 ? (
+                <h1 className="text-xs tracking-wider sticky text-link pl-3 z-10 left-0 top-8">
+                  WOMEN'S NEW ARRIVALS {">"} SHOP NOW
+                </h1>
+              ) : (
+                <h1 className="text-xs tracking-wider text-link sticky pl-3 z-10 left-0 top-8 ">
+                  WOMEN'S NEW ARRIVALS
+                </h1>
+              )}{" "}
+              </div>
+              
+            </div>
+          </div>
         </a>
       </div>
     </div>

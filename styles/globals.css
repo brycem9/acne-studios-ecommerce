@@ -27,6 +27,20 @@ nav {
   @apply pl-2 ml-4;
 }
 
+.search {
+
+}
+
+.search:hover {
+  .glass-icon {
+    color: black;
+  }
+  
+}
+
+
+
+
 .acne-splash {
   transform: translate(-50%, -50%);
 }
@@ -77,4 +91,13 @@ nav {
       background-repeat: no-repeat;
     }
   }
+  
+  .text-link {
+    transform: translateY(70%);
+  }
+
+  .text-container {
+    height: 1000px;
+  } 
+
   
