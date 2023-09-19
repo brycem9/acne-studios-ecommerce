@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 function Header() {
   const [hovered, setIsHovered] = useState(false);
@@ -22,7 +23,7 @@ function Header() {
 
   return (
     <div>
-      <a href="">
+      <Link href="/FW23Denim">
         <div
           className="mt-1 "
           onMouseEnter={handleMouseEnter}
@@ -39,7 +40,7 @@ function Header() {
           )}{" "}
           <div className="img-container "></div>
         </div>
-      </a>
+      </Link>
 
       <div>
         <a href="">

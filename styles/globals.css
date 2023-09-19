@@ -38,15 +38,29 @@ nav {
   
 }
 
+.placeholder-hover:hover::placeholder {
+  color: black !important;
+}
 
+.link-bar {
+  text-transform: capitalize;
+}
 
+.link-bar-anchor {
+  text-decoration: underline;
+  color: rgb(135, 135, 135);
+}
+
+.link-bar-link {
+  @apply hover:text-gray-400
+}
 
 .acne-splash {
   transform: translate(-50%, -50%);
 }
 
 .footer--link {
-  @apply text-xs text-[#0018A8] pt-0.5 pb-0.5;
+  @apply text-xs cursor-pointer hover:text-blue-950  text-[#0018A8] pt-0.5 pb-0.5;
 }
 
 .img-container {
@@ -70,6 +84,22 @@ nav {
     }
   }
 
+ .product-container {
+  width: 50%;
+ }
+
+ .product-card {
+  
+ }
+
+.product-img-container {
+  width: 50%;
+}
+
+ .kylie-container {
+  width: 50%;
+ }
+ 
  
 
 
@@ -97,7 +127,7 @@ nav {
   }
 
   .text-container {
-    height: 1000px;
+    height: 700px;
   } 
 
   

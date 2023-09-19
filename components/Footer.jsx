@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="">
+    <div className="z-30">
       <div className="flex justify-between p-1 pl-3">
         <ul>
           <li className="footer--link">live chat</li>
@@ -31,7 +31,7 @@ function Footer() {
           <li className="footer--link">ca transparency act</li>
           <li className="footer--link">proposition 65</li>
         </ul>
-        <ul>
+        <ul className="mr-56">
           <li className="footer--link">instagram</li>
           <li className="footer--link">facebook</li>
           <li className="footer--link">twitter</li>

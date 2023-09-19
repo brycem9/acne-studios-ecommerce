@@ -5,14 +5,15 @@ import {
   UserIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
+import { Link } from "next/link";
 
 function Navbar() {
   return (
     <nav className="flex z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
       <div className="basis-[50%]">
         <div className="flex">
-          <a className="basis-[50%] hover:text-gray-500" href="">
-            ACNESTUDIOS.COM
+          <a href="/home" className="basis-[50%] hover:text-gray-500">
+            <div>ACNESTUDIOS.COM</div> 
           </a>
           <ul className="flex ml-[10px]">
             <li className="mr-6">WOMAN</li>
@@ -22,7 +23,7 @@ function Navbar() {
       </div>
       <div>
         <div className="flex ">
-          <div className="flex hover:border pl-2 border-black search hover:-ml-[1.8px] mr-8">
+          <div className="flex hover:outline  hover:placeholder-black pl-2 outline-black search outline-1 mr-8">
             <MagnifyingGlassIcon className="glass-icon w-3.5  text-gray-500" />
             <input
               placeholder="SEARCH"
