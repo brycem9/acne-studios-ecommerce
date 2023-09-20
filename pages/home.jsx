@@ -8,8 +8,8 @@ export default function Landing() {
     <div>
        <Navbar/>
        <div className="flex justify-center">
-        <img
-          className="acne-splash w-[75%] pb-3 z-30 fixed top-[50%] left-[50%] mix-blend-luminosity"
+       <img
+          className="acne-splash w-[75%] pb-40 z-30 fixed top-[50%] left-[50%] mix-blend-luminosity"
           src="/assets/logos/denim-logo.png"
         />
       </div>

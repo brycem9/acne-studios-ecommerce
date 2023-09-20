@@ -1,12 +1,22 @@
 import Navbar from "../components/Navbar";
-import React from "react";
+import React, { useState } from "react";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import Footer from "@/components/Footer";
 
 function FW23Denim() {
+  const [hovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div>
       <Navbar />
+
       <div className="flex z-19 fixed top-[29px] left-0 right-0 bg-[#F2F2F2] items-center h-[30px] p-3 ">
         <ul className="flex link-bar text-xs items-center space-x-[30px]">
           <a className="link-bar-anchor mr-1" href="">
@@ -45,47 +55,41 @@ function FW23Denim() {
           <h1>FILTER</h1>
         </div>
       </div>
-      
-      <div className="flex">
-        <figure className="kylie-container">
-          <img className="" src="\assets\kylie\denim-3.jpg" alt="" />
-        </figure>
-        <div className="product-container flex flex-wrap">
-          <div className="product-img-container ">
-            <img
-              className=""
-              src="\assets\products\denim\jackets\C90095-900_F.jpg"
-              alt=""
-            />
+
+      <div className="">
+        <div className="flex">
+          <figure className="kylie-container">
+            <img className="" src="\assets\kylie\denim-3.jpg" alt="" />
+          </figure>
+          <div className="product-container flex flex-wrap">
+            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+              <div className="flex justify-between bg-white p-2 text-xs">
+                <h1>LOOSE FIT DENIM JACKET</h1>
+                <p>$500</p>
+              </div>
+            </div>
+            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline pr-[1px]">
+              <div className="flex justify-between bg-white p-2 text-xs">
+                <h1>LOOSE FIT DENIM JACKET</h1>
+                <p>$500</p>
+              </div>
+            </div>
+            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline pr-[1px]">
+              <div className="flex -outline-offset-1 justify-between bg-white p-2 text-xs">
+                <h1>LOOSE FIT DENIM JACKET</h1>
+                <p>$500</p>
+              </div>
+            </div>
+            <div className="product-img-container flex flex-col justify-end outline-[1px] hover:outline pr-[1px]">
+              <div className="flex justify-between bg-white p-2 text-xs">
+                <h1>LOOSE FIT DENIM JACKET</h1>
+                <p>$500</p>
+              </div>
+            </div>
           </div>
-          <div className="product-img-container">
-            <img
-              className=""
-              src="\assets\products\denim\jackets\C90095-900_F.jpg"
-              alt=""
-            />
-           
-          </div>
-          <div className="product-img-container">
-            <img
-              className=""
-              src="\assets\products\denim\jackets\C90095-900_F.jpg"
-              alt=""
-            />
-           
-          </div>
-          <div className="product-img-container">
-            <img
-              className=""
-              src="\assets\products\denim\jackets\C90095-900_F.jpg"
-              alt=""
-            />
-           
-          </div>
-          
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

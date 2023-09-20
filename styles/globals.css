@@ -88,16 +88,24 @@ nav {
   width: 50%;
  }
 
+
  .product-card {
   
  }
 
 .product-img-container {
   width: 50%;
+  background-image: url("/assets/products/denim/jackets/C90095-900_F.jpg");
+  background-size: cover;
 }
 
  .kylie-container {
   width: 50%;
+  /* background-image: url("/assets/kylie/denim-3.jpg");
+  background-size: contain;
+  height: 100vh; */
+  
+  
  }
  
  
@@ -107,8 +115,8 @@ nav {
     position: relative;
     width: 100vw;
     height: 0; 
-    padding-bottom: calc(100% / (16 / 9));
-  
+    padding-bottom: calc(100% / (14 / 9));
+   
     &::before {
       content: "";
       position: absolute;

@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div className="z-30">
-      <div className="flex justify-between p-1 pl-3">
+      <div className="flex justify-between p-1 pl-3 pb-10">
         <ul>
           <li className="footer--link">live chat</li>
           <li className="footer--link">call</li>
