@@ -2,6 +2,9 @@ import Navbar from "../components/Navbar";
 import React, { useState } from "react";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import Footer from "@/components/Footer";
+import SiteMenu from "@/components/SiteMenu";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 function FW23Denim() {
   const [hovered, setIsHovered] = useState(false);
@@ -13,29 +16,19 @@ function FW23Denim() {
     setIsHovered(false);
   };
 
+  const router = useRouter()
+
+  const handleClick = () => {
+    const newUrl = '/home';
+    router.push(newUrl);
+  }
+
+
   return (
     <div>
       <Navbar />
-
-      <div className="flex z-19 fixed top-[29px] left-0 right-0 bg-[#F2F2F2] items-center h-[30px] p-3 ">
-        <ul className="flex link-bar text-xs items-center space-x-[30px]">
-          <a className="link-bar-anchor mr-1" href="">
-            <li>Kylie Jenner FW23 Denim</li>
-          </a>
-          <a href="" className="link-bar-link">
-            <li>Jeans</li>
-          </a>
-          <a href="" className="link-bar-link">
-            <li>New Arrivals</li>
-          </a>
-          <a href="" className="link-bar-link">
-            <li>Personalisation</li>
-          </a>
-          <a href="" className="link-bar-link">
-            <li>Platt bag</li>
-          </a>
-        </ul>
-      </div>
+      <SiteMenu/>
+      
       <div className="border-b">
         <div className="mt-20 ml-3">
           <h1 className="text-xs pb-3">KYLIE JENNER FW23 DENIM</h1>
@@ -57,35 +50,43 @@ function FW23Denim() {
       </div>
 
       <div className="">
-        <div className="flex">
-          <figure className="kylie-container">
-            <img className="" src="\assets\kylie\denim-3.jpg" alt="" />
-          </figure>
+        <div className="flex h-auto">
+          
+          
+          <div className="kylie-container flex flex-col justify-end" >
+            <div className="flex justify-between text-xs bg-white p-2">
+               <h1>MULTIPOCKET MINI BAG <sup className="tracking-wider">RUNWAY SHOW</sup> </h1>
+               <p>$1,300</p>
+            </div>
+           
+          </div>
           <div className="product-container flex flex-wrap">
+           
+           <div onClick={handleClick} className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+              <div  className="flex justify-between bg-white p-2 text-xs">
+                <h1>LOOSE FIT DENIM JACKET</h1>
+                <p>$500</p>
+              </div>
+            </div>
             <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
               <div className="flex justify-between bg-white p-2 text-xs">
                 <h1>LOOSE FIT DENIM JACKET</h1>
                 <p>$500</p>
               </div>
             </div>
-            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline pr-[1px]">
+            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
               <div className="flex justify-between bg-white p-2 text-xs">
                 <h1>LOOSE FIT DENIM JACKET</h1>
                 <p>$500</p>
               </div>
             </div>
-            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline pr-[1px]">
-              <div className="flex -outline-offset-1 justify-between bg-white p-2 text-xs">
-                <h1>LOOSE FIT DENIM JACKET</h1>
-                <p>$500</p>
-              </div>
-            </div>
-            <div className="product-img-container flex flex-col justify-end outline-[1px] hover:outline pr-[1px]">
+            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
               <div className="flex justify-between bg-white p-2 text-xs">
                 <h1>LOOSE FIT DENIM JACKET</h1>
                 <p>$500</p>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

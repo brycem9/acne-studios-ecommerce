@@ -43,7 +43,7 @@ function Header() {
       </Link>
 
       <div>
-        <a href="">
+        <Link href="/FW23Denim">
           <div
             className="relative"
             onMouseEnter={handleMouseEnter2}
@@ -64,7 +64,7 @@ function Header() {
               
             </div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );

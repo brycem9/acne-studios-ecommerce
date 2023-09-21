@@ -57,7 +57,10 @@ nav {
 
 .acne-splash {
   transform: translate(-50%, -50%);
+  
 }
+
+
 
 .footer--link {
   @apply text-xs cursor-pointer hover:text-blue-950  text-[#0018A8] pt-0.5 pb-0.5;
@@ -84,6 +87,7 @@ nav {
     }
   }
 
+
  .product-container {
   width: 50%;
  }
@@ -101,11 +105,11 @@ nav {
 
  .kylie-container {
   width: 50%;
-  /* background-image: url("/assets/kylie/denim-3.jpg");
+  height: 0;
+  padding-top: calc(42.2% / (9 / 16));
+  background-image: url("/assets/kylie/denim-3.jpg");
   background-size: contain;
-  height: 100vh; */
-  
-  
+  background-repeat: no-repeat;
  }
  
  
@@ -115,7 +119,7 @@ nav {
     position: relative;
     width: 100vw;
     height: 0; 
-    padding-bottom: calc(100% / (14 / 9));
+    padding-bottom: calc(100% / (14.5 / 9));
    
     &::before {
       content: "";
