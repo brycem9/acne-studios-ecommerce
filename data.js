@@ -19,7 +19,7 @@ export const products = [
     },
     {
         id: 3,
-        name: "LOOSE FIT DENIM JACKET",
+        name: "RELAXED FIT DENIM JACKET",
         url: "",
         price: 500,
         color: "Dark Grey",

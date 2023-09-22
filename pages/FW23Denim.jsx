@@ -16,19 +16,18 @@ function FW23Denim() {
     setIsHovered(false);
   };
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClick = () => {
-    const newUrl = '/home';
+    const newUrl = "/home";
     router.push(newUrl);
-  }
-
+  };
 
   return (
     <div>
       <Navbar />
-      <SiteMenu/>
-      
+      <SiteMenu />
+
       <div className="border-b">
         <div className="mt-20 ml-3">
           <h1 className="text-xs pb-3">KYLIE JENNER FW23 DENIM</h1>
@@ -50,43 +49,91 @@ function FW23Denim() {
       </div>
 
       <div className="">
-        <div className="flex h-auto">
-          
-          
-          <div className="kylie-container flex flex-col justify-end" >
-            <div className="flex justify-between text-xs bg-white p-2">
-               <h1>MULTIPOCKET MINI BAG <sup className="tracking-wider">RUNWAY SHOW</sup> </h1>
-               <p>$1,300</p>
+        <div className="flex">
+          <div className="kylie-container flex flex-col justify-end">
+            <div className="flex justify-between text-[#0018A8] text-xs bg-white p-2">
+              <h1>
+                MULTIPOCKET MINI BAG{" "}
+                <sup className="tracking-wider text-black">RUNWAY SHOW</sup>{" "}
+              </h1>
+              <p className="text-black">$1,300</p>
             </div>
-           
           </div>
           <div className="product-container flex flex-wrap">
-           
-           <div onClick={handleClick} className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div  className="flex justify-between bg-white p-2 text-xs">
+            <div
+              onClick={handleClick}
+              className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline "
+            >
+              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
                 <h1>LOOSE FIT DENIM JACKET</h1>
-                <p>$500</p>
+                <p className="text-black">$500</p>
               </div>
             </div>
-            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between bg-white p-2 text-xs">
-                <h1>LOOSE FIT DENIM JACKET</h1>
-                <p>$500</p>
+            <div className="product-img-container2 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                <h1>RELAXED FIT DENIM JACKET</h1>
+                <p className="text-black">$500</p>
               </div>
             </div>
-            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between bg-white p-2 text-xs">
-                <h1>LOOSE FIT DENIM JACKET</h1>
-                <p>$500</p>
+            <div className="product-img-container3 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                <h1>LOOSE FIT JEANS</h1>
+                <p className="text-black">$500</p>
               </div>
             </div>
-            <div className="product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between bg-white p-2 text-xs">
-                <h1>LOOSE FIT DENIM JACKET</h1>
-                <p>$500</p>
+            <div className="product-img-container4 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                <h1>RELAXED FIT JEANS</h1>
+                <p className="text-black">$500</p>
               </div>
             </div>
-            
+            <div></div>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex">
+            <div className="product-container flex flex-wrap">
+              <div
+                onClick={handleClick}
+                className="cursor-pointer product-img-container5 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline "
+              >
+                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                  <h1>LOOSE FIT DENIM JACKET</h1>
+                  <p className="text-black">$500</p>
+                </div>
+              </div>
+              <div className="product-img-container6 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                  <h1>LOOSE FIT DENIM JACKET</h1>
+                  <p className="text-black">$500</p>
+                </div>
+              </div>
+              <div className="product-img-container7 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                  <h1>HEART CHAIN NECKLACE</h1>
+                  <p className="text-black">$500</p>
+                </div>
+              </div>
+              <div className="product-img-container8 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
+                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+                  <h1>MULTI HOOP EARRINGS</h1>
+                  <p className="text-black">$500</p>
+                </div>
+              </div>
+              <div></div>
+            </div>
+            <div className="kylie-container2 flex flex-col justify-end">
+              <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
+                <h1>
+                  MULTIPOCKET MINI BAG{" "}
+                  <sup className="text-black tracking-wider">RUNWAY SHOW</sup>{" "}
+                </h1>
+                <p className="text-black">$500</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center p-24">
+            <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">CONTINUE TO CART</button>
           </div>
         </div>
       </div>

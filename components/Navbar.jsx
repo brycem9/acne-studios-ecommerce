@@ -9,15 +9,15 @@ import { Link } from "next/link";
 
 function Navbar() {
   return (
-    <nav className="flex z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
+    <nav className="flex  z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
       <div className="basis-[50%]">
         <div className="flex">
           <a href="/home" className="basis-[50%] hover:text-gray-500">
             <div>ACNESTUDIOS.COM</div> 
           </a>
           <ul className="flex ml-[10px]">
-            <li className="mr-6">WOMAN</li>
-            <li className="">MAN</li>
+           <a href=""><li className=" transition-all hover:text-gray-500 duration-300 mr-6">WOMAN</li></a> 
+            <a href=""><li className="transition-all hover:text-gray-500 duration-300 ">MAN</li></a>
           </ul>
         </div>
       </div>
@@ -31,7 +31,7 @@ function Navbar() {
               type="text"
             />
           </div>
-          <div className="flex">
+          <div className="flex ">
             <div className="flex items-center ml-6">
               <button className="flex items-center nav--button">
                 <QuestionMarkCircleIcon className="w-6 pr-2" />
@@ -41,7 +41,7 @@ function Navbar() {
                 <UserIcon className="w-6 pr-2" />
                 <h1>ACCOUNT</h1>
               </button>
-              <button className="flex items-center nav--button"><ShoppingBagIcon className="w-6 pr-2" />
+              <button className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"><ShoppingBagIcon className="w-6 pr-2" />
               <h1>BAG</h1></button>
             </div>
           </div>

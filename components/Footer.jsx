@@ -2,11 +2,11 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className=" z-40">
+    <div className="border-t-gray-100 border z-40">
       <div className="flex justify-between z-50 p-1 pl-3 pb-10 tracking-wider">
         <ul>
-          <li className="footer--link">live chat</li>
-          <li className="footer--link">call</li>
+          <li className="footer--link">live chat <sup className="text-red-600">not available</sup> </li>
+          <li className="footer--link">call <sup className="text-red-600">not available</sup></li>
           <li className="footer--link">email </li>
         </ul>
         <ul>

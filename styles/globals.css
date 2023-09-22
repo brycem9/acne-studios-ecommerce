@@ -99,7 +99,47 @@ nav {
 
 .product-img-container {
   width: 50%;
-  background-image: url("/assets/products/denim/jackets/C90095-900_F.jpg");
+  background-image: url("/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_F.jpg");
+  background-size: cover;
+}
+
+
+.product-img-container2 {
+  width: 50%;
+  background-image: url("/assets/products/denim/jackets/RELAXED FIT DENIM JACKET/C90149-AA3_PLP_woman-fw23-denim.jpg");
+  background-size: cover;
+}
+
+.product-img-container3 {
+  width: 50%;
+  background-image: url("/assets/products/denim/jeans/LOOSE FIT JEANS/A00371-AA3_F.jpg");
+  background-size: cover;
+}
+
+.product-img-container4 {
+  width: 50%;
+  background-image: url("/assets/products/denim/jeans/RELAXED FIT JEANS/A00335-900_PLP_woman-fw23-denim.jpg");
+  background-size: cover;
+}
+
+.product-img-container5 {
+  width: 50%;
+  background-image: url("/assets/products/glasses/WHITE METAL FRAME/C30055-CAH_A.jpg");
+  background-size: cover;
+}
+.product-img-container6 {
+  width: 50%;
+  background-image: url("/assets/products/glasses/BLACK METAL FRAME/C30055-Z33_A.jpg");
+  background-size: cover;
+}
+.product-img-container7 {
+  width: 50%;
+  background-image: url("/assets/products/accessories/HEART CHARM NECKLACE/C50399-BWF_A.jpg");
+  background-size: cover;
+}
+.product-img-container8 {
+  width: 50%;
+  background-image: url("/assets/products/accessories/MULTI HOOP EARRINGS/C50385-CNJ_A.jpg");
   background-size: cover;
 }
 
@@ -112,6 +152,15 @@ nav {
   background-repeat: no-repeat;
  }
  
+
+ .kylie-container2 {
+  width: 50%;
+  height: 0;
+  padding-top: calc(42.2% / (9 / 16));
+  background-image: url("/assets/kylie/kylie-v2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+ }
  
 
 
