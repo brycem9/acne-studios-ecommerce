@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 function FW23Denim() {
   const [hovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
+    
     setIsHovered(true);
   };
 
@@ -21,6 +22,12 @@ function FW23Denim() {
   const handleClick = () => {
     const newUrl = "/home";
     router.push(newUrl);
+  };
+
+  const backgroundImageChange = {
+    background: hovered
+      ? 'url(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_UNISEX-WOMAN_A.png)'
+      : 'url(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_F.jpg)',
   };
 
   return (
@@ -62,9 +69,20 @@ function FW23Denim() {
           <div className="product-container flex flex-wrap">
             <div
               onClick={handleClick}
-              className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline "
+              onMouseEnter={handleMouseEnter} 
+              onMouseLeave={handleMouseLeave}
+              style={{
+                backgroundImage: hovered
+                  ? 'url("/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_PLP_woman-fw23-denim_hover.jpg")'
+                  : 'url("/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_F.jpg")',
+                
+                backgroundSize: hovered ? "100%" : ""
+                
+              }}
+              className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline"
+             
             >
-              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
+              <div className="flex justify-between text-[#0018A8] bg-white  p-2 text-xs">
                 <h1>LOOSE FIT DENIM JACKET</h1>
                 <p className="text-black">$500</p>
               </div>
@@ -133,7 +151,9 @@ function FW23Denim() {
             </div>
           </div>
           <div className="flex justify-center p-24">
-            <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">CONTINUE TO CART</button>
+            <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">
+              CONTINUE TO CART
+            </button>
           </div>
         </div>
       </div>
