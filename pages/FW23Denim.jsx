@@ -99,7 +99,6 @@ function FW23Denim() {
                   <p className="text-black">$500</p>
                 </div>
               </div>
-              <div></div>
             </div>
             <div className="kylie-container2 flex flex-col justify-end">
               <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
