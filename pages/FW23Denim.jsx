@@ -5,30 +5,32 @@ import Footer from "@/components/Footer";
 import SiteMenu from "@/components/SiteMenu";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { products } from "../data"
+import { products } from "../data";
 import Product from "@/components/Product";
 
 function FW23Denim() {
-  // const [hoveredProduct, setHoveredProduct] = useState(false);
-  // const handleMouseEnter = () => {
-    
-  //   setHoveredProduct(true);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setHoveredProduct(false);
-  // };
-
-  // const router = useRouter();
-
-  // const handleClick = () => {
-  //   const newUrl = "/home";
-  //   router.push(newUrl);
-  // };
-
-
   return (
-    <div>
+    <div className="relative">
+      <div className="flex relative">
+        <div className="bg-black w-[70%] hover:bg-opacity-30 absolute top-0 left-0 bg-opacity-40 z-50 h-screen"></div>
+        <div className="bg-white w-[30%] h-screen top-0 right-0 absolute z-[49]">
+          <div className="flex justify-between p-2">
+            <h1>BAG 00</h1>
+            <h1>X CLOSE</h1>
+          </div>
+          <div className="bg-[#F2F2F2] border-t-black p-2 border h-full flex">
+            <div className="flex flex-col justify-between mb-10">
+              <div>
+                <h1>MISSING ITEMS IN YOUR CART?</h1>
+              </div>
+              <div className="">
+                <h1>SUBTOTAL</h1>
+                <p>$0.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Navbar />
       <SiteMenu />
 
@@ -64,58 +66,35 @@ function FW23Denim() {
             </div>
           </div>
           <div className="product-container flex flex-wrap">
-            {products.map((product) => (
-              <Product product={product} key={product.id}/>
+            {products.slice(0, 4).map((product) => (
+              <Product product={product} key={product.id} />
             ))}
           </div>
         </div>
       </div>
       <div className="">
-          <div className="flex">
-            <div className="product-container flex flex-wrap">
-              <div
-                className="cursor-pointer product-img-container5 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline "
-              >
-                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                  <h1>LOOSE FIT DENIM JACKET</h1>
-                  <p className="text-black">$500</p>
-                </div>
-              </div>
-              <div className="product-img-container6 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                  <h1>LOOSE FIT DENIM JACKET</h1>
-                  <p className="text-black">$500</p>
-                </div>
-              </div>
-              <div className="product-img-container7 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                  <h1>HEART CHAIN NECKLACE</h1>
-                  <p className="text-black">$500</p>
-                </div>
-              </div>
-              <div className="product-img-container8 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-                <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                  <h1>MULTI HOOP EARRINGS</h1>
-                  <p className="text-black">$500</p>
-                </div>
-              </div>
-            </div>
-            <div className="kylie-container2 flex flex-col justify-end">
-              <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
-                <h1>
-                  MULTIPOCKET MINI BAG{" "}
-                  <sup className="text-black tracking-wider">RUNWAY SHOW</sup>{" "}
-                </h1>
-                <p className="text-black">$500</p>
-              </div>
-            </div>
+        <div className="flex">
+          <div className="product-container flex flex-wrap">
+            {products.slice(4, 8).map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
           </div>
-          <div className="flex justify-center p-24">
-            <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">
-              CONTINUE TO CART
-            </button>
+          <div className="kylie-container2 flex flex-col justify-end">
+            <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
+              <h1>
+                MULTIPOCKET MINI BAG{" "}
+                <sup className="text-black tracking-wider">RUNWAY SHOW</sup>{" "}
+              </h1>
+              <p className="text-black">$500</p>
+            </div>
           </div>
         </div>
+        <div className="flex justify-center p-24">
+          <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">
+            CONTINUE TO CART
+          </button>
+        </div>
+      </div>
       <Footer />
     </div>
   );
