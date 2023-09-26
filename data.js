@@ -6,33 +6,43 @@ export const products = [
         price: 510,
         color: "Black",
         SKU: "FN-UX-OUTW000018",
-        description: "Acne Studios black denim jacket features a loose fit with elongated sleeves and hem length. Crafted from rigid denim made of organically grown cotton."
+        description: "Acne Studios black denim jacket features a loose fit with elongated sleeves and hem length. Crafted from rigid denim made of organically grown cotton.",
+        imageUrl: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-product-image.jpg" ,
+        hoverUrl: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-jacket-hover.jpg",
     },
     {
         id: 2,
-        name: "RELAXED FIT JEANS",
-        url: "",
-        price: 380,
-        color: "Black",
-        itemId: "Acne Studios 2022 Vintage Black",
-        description: "Acne Studios black relaxed fit jeans feature a 5-pocket denim construction with a high waist, wide leg and long length. The 2022 jeans are crafted from rigid denim made of cotton."
-    },
-    {
-        id: 3,
         name: "RELAXED FIT DENIM JACKET",
         url: "",
         price: 500,
         color: "Dark Grey",
         itemId: "FN-WN-OUTW000514",
-        description: "Acne Studios dark grey denim jacket features a loose fit with elongated sleeves and hem length. Crafted from rigid denim made of cotton."
+        description: "Acne Studios dark grey denim jacket features a loose fit with elongated sleeves and hem length. Crafted from rigid denim made of cotton.",
+        imageUrl: "/assets/products/denim/jackets/RELAXED-FIT-DENIM-JACKET/relaxed-fit-denim-jacket-product-image.jpg",
+        hoverUrl: "/assets/products/denim/jackets/RELAXED-FIT-DENIM-JACKET/relaxed-fit-denim-jacket-hover.jpg",
+    },
+    {
+        id: 3,
+        name: "LOOSE FIT JEANS",
+        url: "",
+        price: 390,
+        color: "Black",
+        itemId: "Style ID: Acne Studios 2023F Faded Black",
+        description: "Acne Studios dark grey loose fit jeans feature a 5-pocket denim construction with a mid-waist, wide leg and long length.",
+        imageUrl: "/assets/products/denim/jeans/LOOSE-FIT-JEANS/loose-fit-jeans-product-image.jpg",
+        hoverUrl: "url(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_UNISEX-WOMAN_A.png)",
     },
     {
         id: 4,
-        name: "LOOSE FIT JEANS",
+        name: "RELAXED FIT JEANS",
         url: "",
-        price: 510,
+        price: 380,
         color: "Black",
-        itemId: "Style ID: Acne Studios 2023F Faded Black",
-        description: "Acne Studios dark grey loose fit jeans feature a 5-pocket denim construction with a mid-waist, wide leg and long length."
+        itemId: "Acne Studios 2022 Vintage Black",
+        description: "Acne Studios black relaxed fit jeans feature a 5-pocket denim construction with a high waist, wide leg and long length. The 2022 jeans are crafted from rigid denim made of cotton.",
+        imageUrl: "/assets/products/denim/jeans/RELAXED-FIT-JEANS/relaxed-fit-denim-jeans-product-image.jpg",
+        hoverUrl: "ur;(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_UNISEX-WOMAN_A.png)",
     },
+    
+    
 ]

@@ -5,30 +5,27 @@ import Footer from "@/components/Footer";
 import SiteMenu from "@/components/SiteMenu";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { products } from "../data"
+import Product from "@/components/Product";
 
 function FW23Denim() {
-  const [hovered, setIsHovered] = useState(false);
-  const handleMouseEnter = () => {
+  // const [hoveredProduct, setHoveredProduct] = useState(false);
+  // const handleMouseEnter = () => {
     
-    setIsHovered(true);
-  };
+  //   setHoveredProduct(true);
+  // };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  // const handleMouseLeave = () => {
+  //   setHoveredProduct(false);
+  // };
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleClick = () => {
-    const newUrl = "/home";
-    router.push(newUrl);
-  };
+  // const handleClick = () => {
+  //   const newUrl = "/home";
+  //   router.push(newUrl);
+  // };
 
-  const backgroundImageChange = {
-    background: hovered
-      ? 'url(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_UNISEX-WOMAN_A.png)'
-      : 'url(/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_F.jpg)',
-  };
 
   return (
     <div>
@@ -67,52 +64,16 @@ function FW23Denim() {
             </div>
           </div>
           <div className="product-container flex flex-wrap">
-            <div
-              onClick={handleClick}
-              onMouseEnter={handleMouseEnter} 
-              onMouseLeave={handleMouseLeave}
-              style={{
-                backgroundImage: hovered
-                  ? 'url("/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_PLP_woman-fw23-denim_hover.jpg")'
-                  : 'url("/assets/products/denim/jackets/LOOSE FIT DENIM JACKET/C90095-900_F.jpg")',
-                
-                backgroundSize: hovered ? "100%" : ""
-                
-              }}
-              className="cursor-pointer product-img-container flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline"
-             
-            >
-              <div className="flex justify-between text-[#0018A8] bg-white  p-2 text-xs">
-                <h1>LOOSE FIT DENIM JACKET</h1>
-                <p className="text-black">$500</p>
-              </div>
-            </div>
-            <div className="product-img-container2 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                <h1>RELAXED FIT DENIM JACKET</h1>
-                <p className="text-black">$500</p>
-              </div>
-            </div>
-            <div className="product-img-container3 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                <h1>LOOSE FIT JEANS</h1>
-                <p className="text-black">$500</p>
-              </div>
-            </div>
-            <div className="product-img-container4 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline ">
-              <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
-                <h1>RELAXED FIT JEANS</h1>
-                <p className="text-black">$500</p>
-              </div>
-            </div>
-            <div></div>
+            {products.map((product) => (
+              <Product product={product} key={product.id}/>
+            ))}
           </div>
         </div>
-        <div className="">
+      </div>
+      <div className="">
           <div className="flex">
             <div className="product-container flex flex-wrap">
               <div
-                onClick={handleClick}
                 className="cursor-pointer product-img-container5 flex flex-col justify-end -outline-offset-1 outline-[1px] hover:outline "
               >
                 <div className="flex justify-between text-[#0018A8] bg-white p-2 text-xs">
@@ -156,7 +117,6 @@ function FW23Denim() {
             </button>
           </div>
         </div>
-      </div>
       <Footer />
     </div>
   );
