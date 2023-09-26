@@ -7,30 +7,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { products } from "../data";
 import Product from "@/components/Product";
+import SidebarModal from "@/components/SidebarModal";
 
 function FW23Denim() {
+  const [modal, setModal] = useState(true)
+
+  const openModal = () => {
+    setModal(true)
+  }
+
+  const closeModal = () => {
+    setModal(false)
+  }
+
+
+
   return (
-    <div className="relative">
-      <div className="flex relative">
-        <div className="bg-black w-[70%] hover:bg-opacity-30 absolute top-0 left-0 bg-opacity-40 z-50 h-screen"></div>
-        <div className="bg-white w-[30%] h-screen top-0 right-0 absolute z-[49]">
-          <div className="flex justify-between p-2">
-            <h1>BAG 00</h1>
-            <h1>X CLOSE</h1>
-          </div>
-          <div className="bg-[#F2F2F2] border-t-black p-2 border h-full flex">
-            <div className="flex flex-col justify-between mb-10">
-              <div>
-                <h1>MISSING ITEMS IN YOUR CART?</h1>
-              </div>
-              <div className="">
-                <h1>SUBTOTAL</h1>
-                <p>$0.00</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+      {modal ? <SidebarModal/> : ""}
       <Navbar />
       <SiteMenu />
 

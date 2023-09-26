@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MagnifyingGlassIcon,
   QuestionMarkCircleIcon,
@@ -8,6 +8,18 @@ import {
 import { Link } from "next/link";
 
 function Navbar() {
+
+  const [modal, setModal] = useState(false)
+
+  const openModal = () => {
+    console.log("open")
+    setModal(true)
+  }
+
+  const closeModal = () => {
+    setModal(false)
+  }
+
   return (
     <nav className="flex  z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
       <div className="basis-[50%]">
@@ -42,7 +54,7 @@ function Navbar() {
                 <h1>ACCOUNT</h1>
               </button>
               <button className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"><ShoppingBagIcon className="w-6 pr-2" />
-              <h1>BAG</h1></button>
+              <h1 onClick={openModal} >BAG</h1></button>
             </div>
           </div>
         </div>
