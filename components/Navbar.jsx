@@ -1,35 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   MagnifyingGlassIcon,
   QuestionMarkCircleIcon,
   UserIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "next/link";
+import { useDispatch } from "react-redux";
+import { handleModal } from "@/redux/SidebarSlice";
 
 function Navbar() {
-
-  const [modal, setModal] = useState(false)
-
-  const openModal = () => {
-    console.log("open")
-    setModal(true)
-  }
-
-  const closeModal = () => {
-    setModal(false)
-  }
+  const dispatch = useDispatch();
 
   return (
     <nav className="flex  z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
       <div className="basis-[50%]">
         <div className="flex">
           <a href="/home" className="basis-[50%] hover:text-gray-500">
-            <div>ACNESTUDIOS.COM</div> 
+            <div>ACNESTUDIOS.COM</div>
           </a>
           <ul className="flex ml-[10px]">
-           <a href=""><li className=" transition-all hover:text-gray-500 duration-300 mr-6">WOMAN</li></a> 
-            <a href=""><li className="transition-all hover:text-gray-500 duration-300 ">MAN</li></a>
+            <a href="">
+              <li className=" transition-all hover:text-gray-500 duration-300 mr-6">
+                WOMAN
+              </li>
+            </a>
+            <a href="">
+              <li className="transition-all hover:text-gray-500 duration-300 ">
+                MAN
+              </li>
+            </a>
           </ul>
         </div>
       </div>
@@ -53,8 +52,13 @@ function Navbar() {
                 <UserIcon className="w-6 pr-2" />
                 <h1>ACCOUNT</h1>
               </button>
-              <button className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"><ShoppingBagIcon className="w-6 pr-2" />
-              <h1 onClick={openModal} >BAG</h1></button>
+              <button
+                onClick={() => dispatch(handleModal(true))}
+                className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"
+              >
+                <ShoppingBagIcon className="w-6 pr-2" />
+                <h1>BAG</h1>
+              </button>
             </div>
           </div>
         </div>

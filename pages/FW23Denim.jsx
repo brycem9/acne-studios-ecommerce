@@ -10,22 +10,14 @@ import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
 
 function FW23Denim() {
-  const [modal, setModal] = useState(true)
-
-  const openModal = () => {
-    setModal(true)
-  }
-
-  const closeModal = () => {
-    setModal(false)
-  }
+  
 
 
 
   return (
     <div>
-      {modal ? <SidebarModal/> : ""}
-      <Navbar />
+      <SidebarModal/>
+      <Navbar/>
       <SiteMenu />
 
       <div className="border-b">
