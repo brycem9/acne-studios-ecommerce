@@ -2,10 +2,12 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
+import SidebarModal from "@/components/SidebarModal";
 
 export default function Landing() {
   return (
     <div>
+      <SidebarModal/>
       <Navbar />
       <div className="flex justify-center">
         

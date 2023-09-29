@@ -22,10 +22,18 @@
 }
 
 
-
+/* .logo-slide {
+  animation: 10s slide linear infinite;
+} */
 
 ul {
   text-transform: uppercase;
+}
+
+.list-info:before {
+content: "—";
+position: absolute;
+margin-left: -20px;
 }
 
 body {

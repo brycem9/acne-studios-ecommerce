@@ -18,7 +18,7 @@ const Product = ({ product }) => {
     
     
     const handleClick = () => {
-        const newUrl = "/home";
+        const newUrl = "/info";
         router.push(newUrl);
       };
   return (

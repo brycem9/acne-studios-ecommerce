@@ -26,7 +26,7 @@ function SidebarModal() {
           <h1>BAG 00</h1>
           <h1 className="cursor-pointer" onClick={() => dispatch(handleModal(false))} >X CLOSE</h1>
         </div>
-        <div className="bg-[#F2F2F2]  border-t-black  border flex flex-col justify-between h-full">
+        <div className="bg-[#F2F2F2]  border-t-black z-[48] border flex flex-col justify-between h-full">
           <div className="p-2">
             <h1>MISSING ITEMS IN YOUR CART?</h1>
           </div>
