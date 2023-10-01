@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
+
 const Product = ({ product }) => {
     console.log(product.imageUrl)
     const [hoveredProduct, setHoveredProduct] = useState(false);
@@ -18,7 +19,7 @@ const Product = ({ product }) => {
     
     
     const handleClick = () => {
-        const newUrl = "/info";
+        const newUrl = `/info/?id=${product.id}`;
         router.push(newUrl);
       };
   return (

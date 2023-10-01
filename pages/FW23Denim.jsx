@@ -12,7 +12,9 @@ import HomeLink from "@/components/HomeLink";
 
 function FW23Denim() {
   return (
+    
     <div>
+      
       <SidebarModal />
       <Navbar />
       <SiteMenu />
@@ -37,10 +39,12 @@ function FW23Denim() {
       </div>
       <HomeLink/>
       <div className="">
+        
         <div className="flex">
           <div className="kylie-container flex flex-col justify-end">
             <div className="flex justify-between  text-[#0018A8] text-xs bg-white p-2">
               <h1>
+                
                 MULTIPOCKET MINI BAG{" "}
                 <sup className="tracking-wider  text-black">RUNWAY SHOW</sup>{" "}
               </h1>

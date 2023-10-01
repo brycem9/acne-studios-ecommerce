@@ -24,7 +24,7 @@ function SidebarModal() {
       <div className="bg-white w-[25%] h-screen top-0 right-0 absolute z-[49] text-xs">
         <div className="flex justify-between p-2">
           <h1>BAG 00</h1>
-          <h1 className="cursor-pointer" onClick={() => dispatch(handleModal(false))} >X CLOSE</h1>
+          <h1 className="cursor-pointer text-[#0018A8]" onClick={() => dispatch(handleModal(false))} >X CLOSE</h1>
         </div>
         <div className="bg-[#F2F2F2]  border-t-black z-[48] border flex flex-col justify-between h-full">
           <div className="p-2">
