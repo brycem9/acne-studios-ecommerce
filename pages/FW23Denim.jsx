@@ -8,18 +8,14 @@ import { useRouter } from "next/router";
 import { products } from "../data";
 import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
+import HomeLink from "@/components/HomeLink";
 
 function FW23Denim() {
-  
-
-
-
   return (
     <div>
-      <SidebarModal/>
-      <Navbar/>
+      <SidebarModal />
+      <Navbar />
       <SiteMenu />
-
       <div className="border-b">
         <div className="mt-20 ml-3">
           <h1 className="text-xs pb-3">KYLIE JENNER FW23 DENIM</h1>
@@ -39,14 +35,14 @@ function FW23Denim() {
           <h1>FILTER</h1>
         </div>
       </div>
-
+      <HomeLink/>
       <div className="">
         <div className="flex">
           <div className="kylie-container flex flex-col justify-end">
-            <div className="flex justify-between text-[#0018A8] text-xs bg-white p-2">
+            <div className="flex justify-between  text-[#0018A8] text-xs bg-white p-2">
               <h1>
                 MULTIPOCKET MINI BAG{" "}
-                <sup className="tracking-wider text-black">RUNWAY SHOW</sup>{" "}
+                <sup className="tracking-wider  text-black">RUNWAY SHOW</sup>{" "}
               </h1>
               <p className="text-black">$1,300</p>
             </div>
