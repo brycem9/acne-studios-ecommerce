@@ -1,16 +1,29 @@
 import Navbar from "../components/Navbar";
-import React, { useState } from "react";
+import React  from "react";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import Footer from "@/components/Footer";
 import SiteMenu from "@/components/SiteMenu";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { products } from "../data";
 import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
 import HomeLink from "@/components/HomeLink";
 
+ 
+   
+
 function FW23Denim() {
+   const router = useRouter();
+    
+    const handleClick = () => {
+        const newUrl = `/info/?id=${products[8].id}`;
+        router.push(newUrl);
+      };
+
+    const handleClick2 = () => {
+        const newUrl = `/info/?id=${products[9].id}`;
+        router.push(newUrl);
+      };
   return (
     
     <div>
@@ -41,10 +54,9 @@ function FW23Denim() {
       <div className="">
         
         <div className="flex">
-          <div className="kylie-container flex flex-col justify-end">
-            <div className="flex justify-between  text-[#0018A8] text-xs bg-white p-2">
+          <div onClick={handleClick} className="kylie-container cursor-pointer flex flex-col justify-end">
+            <div  className="flex justify-between  text-[#0018A8] text-xs bg-white p-2">
               <h1>
-                
                 MULTIPOCKET MINI BAG{" "}
                 <sup className="tracking-wider  text-black">RUNWAY SHOW</sup>{" "}
               </h1>
@@ -65,13 +77,13 @@ function FW23Denim() {
               <Product product={product} key={product.id} />
             ))}
           </div>
-          <div className="kylie-container2 flex flex-col justify-end">
+          <div onClick={handleClick2} className="kylie-container2 cursor-pointer flex flex-col justify-end">
             <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
               <h1>
-                MULTIPOCKET MINI BAG{" "}
+                MULTIPOCKET BAG{" "}
                 <sup className="text-black tracking-wider">RUNWAY SHOW</sup>{" "}
               </h1>
-              <p className="text-black">$500</p>
+              <p className="text-black">$1,550</p>
             </div>
           </div>
         </div>
