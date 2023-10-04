@@ -81,7 +81,34 @@ nav {
   
 }
 
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+.cart__product--container {
+  max-height: calc(99.9% - 1345px);
+  overflow-y: scroll;
+  
+}
+
+.cart__product--container::-webkit-scrollbar {
+  width: 0.5em;
+}
+.cart__product--container {
+  background: transparent;
+}
+.cart__product--container {
+  background: transparent
+}
 
 .footer--link {
   @apply text-xs cursor-pointer hover:text-blue-950  text-[#0018A8] pt-0.5 pb-0.5;

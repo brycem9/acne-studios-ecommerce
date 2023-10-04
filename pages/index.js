@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 
 
@@ -8,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
 
- 
+
   
   return (
     <main>

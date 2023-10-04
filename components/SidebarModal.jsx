@@ -1,37 +1,102 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {handleModal } from "@/redux/SidebarSlice";
+import { handleModal } from "@/redux/SidebarSlice";
+import { products } from "../data";
 
-function SidebarModal() {
-  const modal = useSelector((state) => 
-      state.sidebar.boolean
-  );
+function SidebarModal({ selectedProduct, cart }) {
+  const modal = useSelector((state) => state.sidebar.boolean);
   const dispatch = useDispatch();
+  const [count, setCount] = useState(1);
 
-  if(!modal) {
-    return 
+  function incrementCount() {
+    if (count < 10) {
+      setCount(count + 1);
+    }
   }
-  
-   
+  function decrementCount() {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  }
+
+  if (!modal) {
+    return;
+  }
+
   return (
-    
-    <div className="flex relative">
+    <div className="fixed top-0 right-0 bottom-0 left-0 z-50 ">
       <div
         onClick={() => dispatch(handleModal(false))}
-        className="bg-black cursor-pointer w-[75%] hover:bg-opacity-30 absolute top-0 left-0 bg-opacity-40 z-50 h-screen"
+        className="bg-black cursor-pointer w-full hover:bg-opacity-30 absolute top-0 left-0 bg-opacity-40 z-50 h-screen"
       ></div>
-      <div className="bg-white w-[25%] h-screen top-0 right-0 absolute z-[49] text-xs">
+      <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
           <h1>BAG 00</h1>
-          <h1 className="cursor-pointer text-[#0018A8]" onClick={() => dispatch(handleModal(false))} >X CLOSE</h1>
+          <h1
+            className="cursor-pointer text-[#0018A8]"
+            onClick={() => dispatch(handleModal(false))}
+          >
+            X CLOSE
+          </h1>
         </div>
-        <div className="bg-[#F2F2F2]  border-t-black z-[48] border flex flex-col justify-between h-full">
-          <div className="p-2">
-            <h1>MISSING ITEMS IN YOUR CART?</h1>
+        <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
+          <div className=" bg-white ">
+            {/* <h1>*EMPTY*</h1> */}
+            <div className="cart__product--container -mr-[5.5px]">
+              {cart.map((cartItem) => {
+                return (
+                  <div key={cartItem.id}>
+                    <div className="flex justify-between border-t border-black border-b-[#E5E7EB] border-b">
+                      <h1>{cartItem.name}</h1>
+                      <p>${cartItem.price}</p>
+                    </div>
+                    <div className="flex w-full  border-black">
+                      <div className="">
+                        <img className="w-[129px]" src={cartItem.imageUrl} alt="" />
+                      </div>
+                      <div className="w-[320px]">
+                        <div className="border-b">
+                          <h1 className="">{cartItem.color}</h1>
+                        </div>
+                        <div className="flex flex-col h-[145px] justify-between">
+                          <h1>ONE SIZE</h1>
+                          <div className="flex w-full  text-sm border-t ">
+                            <button
+                              className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"
+                              onClick={decrementCount}
+                            >
+                              —
+                            </button>
+                            <input
+                              type="number"
+                              placeholder="1"
+                              value={count}
+                              onChange={(event) => setCount(event.target.value)}
+                              max={10}
+                              min={1}
+                              className="w-1/3 pl-[40px] hover:outline focus:outline focus:outline-black -outline-offset-1 outline-1  focus:bg-[#e8f0fe] bg-[#F2F2F2]"
+                            />
+                            <button
+                              onClick={incrementCount}
+                              className="text-[25px] font-light hover:outline outline-1 -outline-offset-1 w-1/3"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex justify-end border-t">
+                          <h1 className="text-[#0018A8]">X REMOVE</h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="cart-footer mb-10 border-t  border-black ">
-            <div className="flex p-1 justify-between">
+          <div className="cart-footer pb-1 bg-[#F2F2F2] border-t  absolute bottom-0 left-0 right-0 border-black ">
+            <div className="flex p-1 justify-between ">
               <h1>SUBTOTAL</h1>
               <p>$0.00</p>
             </div>

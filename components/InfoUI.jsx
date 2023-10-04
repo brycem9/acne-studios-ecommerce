@@ -1,7 +1,28 @@
-import { ChevronRightIcon, PlusIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { CheckIcon, ChevronRightIcon, PlusIcon } from "@heroicons/react/24/outline";
+import React, { useEffect, useState } from "react";
+import { products } from "../data";
+import { useDispatch } from "react-redux";
+import { handleModal } from "@/redux/SidebarSlice";
+import { useRouter } from "next/router";
 
-function InfoUI({ product }) {
+function InfoUI({ product, addToCart, cart }) {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id, "logged")
+  const selectedProduct = products.find((product) => product.id === id);
+  const dispatch = useDispatch()
+  
+
+  function addProductToCart(selectedProduct) {
+    addToCart(selectedProduct);
+  }
+
+  function productExistsInCart() {
+     
+      return cart.find(selectedProduct => selectedProduct.id === id)
+
+  }
+
   return (
     <div className="flex border-b border-black">
       <div className="w-[50%] ">
@@ -54,12 +75,25 @@ function InfoUI({ product }) {
           </p>
         </div>
         <div className="flex items-center h-[100px]">
-          <button className="bg-[#0018A8] sticky top-[147px] text-white w-[95%] h-[60px]">
-            ADD TO BAG
-          </button>
-          <div className="w-[15%] justify-center sticky top-[147px] border border-[#0018A8] h-[60px] flex">
+          {productExistsInCart() ? (
+            <button onClick={() => dispatch(handleModal(true))} className="bg-[#66FF00] sticky top-[147px] text-black w-[95%] h-[60px]">
+              VIEW BAG
+            </button>
+          ) : (
+            <button
+              onClick={() => addProductToCart(selectedProduct)}
+              className="bg-[#0018A8] sticky top-[147px] text-white w-[95%] h-[60px]"
+            >
+              ADD TO BAG
+            </button>
+          )}
+            {
+              productExistsInCart() ? <div className="w-[15%] justify-center sticky top-[147px] border border-[#66FF00] h-[60px] flex">
+              <CheckIcon className="w-6 text-[#66FF00]" />
+            </div> : <div className="w-[15%] justify-center sticky top-[147px] border border-[#0018A8] h-[60px] flex">
             <PlusIcon className="w-6 text-[#0018A8]" />
           </div>
+            }
         </div>
         <div className="border hover:outline  hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
           <div className="flex justify-between  pl-3 pt-2 pb-1">
