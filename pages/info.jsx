@@ -19,11 +19,11 @@ function info() {
   });
 
   function addToCart(selectedProduct) {
-    // Create a copy of the cart array with the new product added
+    
     const updatedCart = [...cart, selectedProduct];
     setCart(updatedCart);
 
-    // Save the updated cart to local storage
+    
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   }
 

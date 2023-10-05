@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
@@ -8,6 +8,28 @@ function SidebarModal({ selectedProduct, cart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
+  
+  const enableBodyScroll = () => {
+    document.body.classList.remove("body-scroll-lock");
+  };
+
+  const disableBodyScroll = () => {
+    document.body.classList.add("body-scroll-lock");
+  };
+
+  
+  useEffect(() => {
+    if (modal) {
+      disableBodyScroll();
+    } else {
+      enableBodyScroll();
+    }
+
+    return () => {
+      enableBodyScroll(); 
+    };
+  }, [modal]);
+
 
   function incrementCount() {
     if (count < 10) {
@@ -43,7 +65,7 @@ function SidebarModal({ selectedProduct, cart }) {
         <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
           <div className=" bg-white ">
             {/* <h1>*EMPTY*</h1> */}
-            <div className="cart__product--container -mr-[5.5px]">
+            <div className="cart__product--container max-h-[615px] overflow-y-auto -mr-[5.5px]">
               {cart.map((cartItem) => {
                 return (
                   <div key={cartItem.id}>

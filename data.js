@@ -14,6 +14,7 @@ export const products = [
         infoImageUrl4: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-jacket-detail.jpg",
         infoImageUrl5: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-jacket-closeup.jpg",
         infoImageUrl6: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-product-image.jpg",
+        count: 1
     },
     {
         id: "FN-WN-OUTW000514",
@@ -30,6 +31,7 @@ export const products = [
         infoImageUrl4: "/assets/products/denim/jackets/RELAXED-FIT-DENIM-JACKET/relaxed-denim-fit-jacket-detail.jpg",
         infoImageUrl5: "/assets/products/denim/jackets/RELAXED-FIT-DENIM-JACKET/relaxed-denim-fit-jacket-left-closeup.jpg",
         infoImageUrl6: "/assets/products/denim/jackets/RELAXED-FIT-DENIM-JACKET/relaxed-denim-fit-jacket-product.jpg",
+        count: 1
     },
     {
         id: "Acne-Studios-2023F-Faded Black",
@@ -46,6 +48,7 @@ export const products = [
         infoImageUrl4: "/assets/products/denim/jeans/LOOSE-FIT-JEANS/loose-fit-jeans-detail.jpg",
         infoImageUrl5: "/assets/products/denim/jeans/LOOSE-FIT-JEANS/loose-fit-jeans-detail-back.jpg",
         infoImageUrl6: "/assets/products/denim/jeans/LOOSE-FIT-JEANS/loose-fit-denim-product-image.jpg",
+        count: 1
     },
     {
         id: "Acne-Studios-2023-Vintage Black",
@@ -62,6 +65,7 @@ export const products = [
         infoImageUrl4: "/assets/products/denim/jeans/RELAXED-FIT-JEANS/relaxed-fit-jeans-detail.jpg",
         infoImageUrl5: "/assets/products/denim/jeans/RELAXED-FIT-JEANS/relaxed-fit-jeans-back-detail.jpg",
         infoImageUrl6: "/assets/products/denim/jeans/RELAXED-FIT-JEANS/relaxed-fit-jeans-product-image.jpg",
+        count: 1
     },
     {
         id: "FN-UX-EYEW000064",
@@ -78,6 +82,7 @@ export const products = [
         infoImageUrl4: "/assets/products/glasses/BLACK-METAL-FRAME/black-glasses-detail.jpg",
         infoImageUrl5: "/assets/products/glasses/BLACK-METAL-FRAME/black-glasses-detail2.jpg",
         infoImageUrl6: "/assets/products/glasses/BLACK-METAL-FRAME/black-glasses-detail4.jpg",
+        count: 1
     },
     {
         id: "FN-UX-EYEW000065",
@@ -94,6 +99,7 @@ export const products = [
         infoImageUrl4: "/assets/products/glasses/WHITE-METAL-FRAME/white-glasses-back.jpg",
         infoImageUrl5: "/assets/products/glasses/WHITE-METAL-FRAME/white-glasses-detail1.jpg",
         infoImageUrl6: "/assets/products/glasses/WHITE-METAL-FRAME/white-glasses-detail2.jpg",
+        count: 1
     },
     {
         id: "FN-UX-JEWE000430",
@@ -110,6 +116,7 @@ export const products = [
         infoImageUrl4: "/assets/products/accessories/TRIO-MIX-RING/trio-mix-ring-detail.jpg",
         infoImageUrl5: "",
         infoImageUrl6: "",
+        count: 1
     },
     {
         id: "FN-UX-JEWE000422",
@@ -126,6 +133,7 @@ export const products = [
         infoImageUrl4: "/assets/products/accessories/MULTI-HOOP-EARRINGS/multi-hoop-detail.jpg",
         infoImageUrl5: "",
         infoImageUrl6: "",
+        count: 1
     },
     {
         id: "Beige-Multi-Pocket-Bag",
@@ -142,6 +150,7 @@ export const products = [
         infoImageUrl4: "/assets/products/bags/MULTIPOCKET-MINI-BAG/MPB-detail2.jpg",
         infoImageUrl5: "/assets/products/bags/MULTIPOCKET-MINI-BAG/MPB-detail3.jpg",
         infoImageUrl6: "/assets/products/bags/MULTIPOCKET-MINI-BAG/MPB-detail4.jpg",
+        count: 1
     },
     {
         id: "MultiPocket-Bag",
@@ -158,6 +167,7 @@ export const products = [
         infoImageUrl4: "/assets/products/bags/MULTIPOCKET-BAG/black-multipocket-detail.jpg",
         infoImageUrl5: "/assets/products/bags/MULTIPOCKET-BAG/black-multipocket-detail2.jpg",
         infoImageUrl6: "/assets/products/bags/MULTIPOCKET-BAG/black-multipocket-detail3.jpg",
+        count: 1
     },
     
     
