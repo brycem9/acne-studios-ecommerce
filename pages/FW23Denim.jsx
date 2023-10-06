@@ -14,6 +14,7 @@ import HomeLink from "@/components/HomeLink";
 
 function FW23Denim() {
    const router = useRouter();
+   
     
     const handleClick = () => {
         const newUrl = `/info/?id=${products[8].id}`;

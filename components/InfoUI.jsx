@@ -47,12 +47,7 @@ function InfoUI({ product, addToCart, cart }) {
         <div className="flex mt-44">
           <img
             className="w-[60px] "
-            src="\assets\products\denim\jackets\LOOSE-FIT-DENIM-JACKET\loose-fit-denim-product-image.jpg"
-            alt=""
-          />
-          <img
-            className="w-[60px] "
-            src="\assets\products\denim\jackets\LOOSE-FIT-DENIM-JACKET\loose-fit-denim-product-image.jpg"
+            src={product.imageUrl}
             alt=""
           />
         </div>

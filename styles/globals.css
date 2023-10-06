@@ -101,12 +101,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .cart__product--container::-webkit-scrollbar {
   width: 0.5em;
 }
-.cart__product--container {
-  background: transparent;
-}
-.cart__product--container {
-  background: transparent
-}
+
 
 .footer--link {
   @apply text-xs cursor-pointer hover:text-blue-950  text-[#0018A8] pt-0.5 pb-0.5;

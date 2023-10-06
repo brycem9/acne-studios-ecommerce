@@ -7,8 +7,9 @@ import { products } from "../data";
 function SidebarModal({ selectedProduct, cart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
   const dispatch = useDispatch();
-  const [count, setCount] = useState(1);
-  
+  const [productCounts, setProductCounts] = useState({});
+  const [inputValues, setInputValues] = useState({});
+
   const enableBodyScroll = () => {
     document.body.classList.remove("body-scroll-lock");
   };
@@ -17,7 +18,6 @@ function SidebarModal({ selectedProduct, cart }) {
     document.body.classList.add("body-scroll-lock");
   };
 
-  
   useEffect(() => {
     if (modal) {
       disableBodyScroll();
@@ -26,20 +26,60 @@ function SidebarModal({ selectedProduct, cart }) {
     }
 
     return () => {
-      enableBodyScroll(); 
+      enableBodyScroll();
     };
   }, [modal]);
 
-
-  function incrementCount() {
-    if (count < 10) {
-      setCount(count + 1);
-    }
+  function incrementCount(productId) {
+    setInputValues((prevInputValues) => {
+      const currentValue = prevInputValues[productId] || 1;
+      if (currentValue < 10) {
+        const newValue = currentValue + 1;
+        return {
+          ...prevInputValues,
+          [productId]: newValue,
+        };
+      }
+      return prevInputValues;
+    });
+  
+    setProductCounts((prevCounts) => {
+      const count = prevCounts[productId] || 0;
+      if (count < 10) {
+        const newCount = count + 1;
+        return {
+          ...prevCounts,
+          [productId]: newCount,
+        };
+      }
+      return prevCounts;
+    });
   }
-  function decrementCount() {
-    if (count > 0) {
-      setCount(count - 1);
-    }
+
+  function decrementCount(productId) {
+    setInputValues((prevInputValues) => {
+      const currentValue = prevInputValues[productId] || 1;
+      if (currentValue > 1) {
+        const newValue = currentValue - 1;
+        return {
+          ...prevInputValues,
+          [productId]: newValue,
+        };
+      }
+      return prevInputValues;
+    });
+  
+    setProductCounts((prevCounts) => {
+      const count = prevCounts[productId] || 0;
+      if (count > 0) {
+        const newCount = count - 1;
+        return {
+          ...prevCounts,
+          [productId]: newCount,
+        };
+      }
+      return prevCounts;
+    });
   }
 
   if (!modal) {
@@ -54,7 +94,7 @@ function SidebarModal({ selectedProduct, cart }) {
       ></div>
       <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
-          <h1>BAG 00</h1>
+          <h1>BAG {cart.length < 10 ? "0" + cart.length : 10}</h1>
           <h1
             className="cursor-pointer text-[#0018A8]"
             onClick={() => dispatch(handleModal(false))}
@@ -65,8 +105,10 @@ function SidebarModal({ selectedProduct, cart }) {
         <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
           <div className=" bg-white ">
             {/* <h1>*EMPTY*</h1> */}
-            <div className="cart__product--container max-h-[615px] overflow-y-auto -mr-[5.5px]">
+            <div className="cart__product--container max-h-[610px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
+                const productId = cartItem.id;
+                const count = productCounts[productId] || 1;
                 return (
                   <div key={cartItem.id}>
                     <div className="flex justify-between border-t border-black border-b-[#E5E7EB] border-b">
@@ -75,7 +117,11 @@ function SidebarModal({ selectedProduct, cart }) {
                     </div>
                     <div className="flex w-full  border-black">
                       <div className="">
-                        <img className="w-[129px]" src={cartItem.imageUrl} alt="" />
+                        <img
+                          className="w-[128.5px]"
+                          src={cartItem.imageUrl}
+                          alt=""
+                        />
                       </div>
                       <div className="w-[320px]">
                         <div className="border-b">
@@ -86,21 +132,39 @@ function SidebarModal({ selectedProduct, cart }) {
                           <div className="flex w-full  text-sm border-t ">
                             <button
                               className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"
-                              onClick={decrementCount}
+                              onClick={() => decrementCount(productId)}
                             >
                               —
                             </button>
                             <input
                               type="number"
                               placeholder="1"
-                              value={count}
-                              onChange={(event) => setCount(event.target.value)}
+                              value={inputValues[productId] || 1}
+                              onChange={(event) => {
+                                const newValue = parseInt(
+                                  event.target.value,
+                                  10
+                                );
+                                setInputValues((prevInputValues) => ({
+                                  ...prevInputValues,
+                                  [productId]: newValue,
+                                }));
+                              }}
+                              onBlur={() => {
+                                const newValue = inputValues[productId] || 1;
+                                if (newValue < 1 || newValue > 10) {
+                                  setInputValues((prevInputValues) => ({
+                                    ...prevInputValues,
+                                    [productId]: 10,
+                                  }));
+                                }
+                              }}
                               max={10}
                               min={1}
                               className="w-1/3 pl-[40px] hover:outline focus:outline focus:outline-black -outline-offset-1 outline-1  focus:bg-[#e8f0fe] bg-[#F2F2F2]"
                             />
                             <button
-                              onClick={incrementCount}
+                              onClick={() => incrementCount(productId)}
                               className="text-[25px] font-light hover:outline outline-1 -outline-offset-1 w-1/3"
                             >
                               +

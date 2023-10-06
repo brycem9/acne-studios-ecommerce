@@ -21,7 +21,7 @@ function info() {
   function addToCart(selectedProduct) {
     
     const updatedCart = [...cart, selectedProduct];
-    setCart(updatedCart);
+    setCart(updatedCart, {...selectedProduct, quantity: 1});
 
     
     localStorage.setItem("cart", JSON.stringify(updatedCart));
