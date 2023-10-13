@@ -9,6 +9,7 @@ function SidebarModal({ selectedProduct, cart }) {
   const dispatch = useDispatch();
   const [productCounts, setProductCounts] = useState({});
   const [inputValues, setInputValues] = useState({});
+  const [totalQuantity, setTotalQuantity] = useState(1);
 
   const enableBodyScroll = () => {
     document.body.classList.remove("body-scroll-lock");
@@ -19,12 +20,32 @@ function SidebarModal({ selectedProduct, cart }) {
   };
 
   useEffect(() => {
+    const newTotalQuantity = Object.values(inputValues).reduce(
+      (total, count) => total + count,
+      1
+    );
+    setTotalQuantity(newTotalQuantity);
+  }, [inputValues]);
+
+  
+  useEffect(() => {
+    if (cart) {
+      // Calculate the initial total quantity based on cart items
+      const initialTotalQuantity = cart.reduce(
+        (total, cartItem) => total + (inputValues[cartItem.id] || 1),
+        0
+      );
+      setTotalQuantity(initialTotalQuantity);
+    }
+  }, [cart, inputValues]);
+  
+  useEffect(() => {
     if (modal) {
       disableBodyScroll();
     } else {
       enableBodyScroll();
     }
-
+  
     return () => {
       enableBodyScroll();
     };
@@ -69,23 +90,15 @@ function SidebarModal({ selectedProduct, cart }) {
       return prevInputValues;
     });
   
-    setProductCounts((prevCounts) => {
-      const count = prevCounts[productId] || 0;
-      if (count > 0) {
-        const newCount = count - 1;
-        return {
-          ...prevCounts,
-          [productId]: newCount,
-        };
-      }
-      return prevCounts;
-    });
   }
+
+  
 
   if (!modal) {
     return;
   }
 
+  
   return (
     <div className="fixed top-0 right-0 bottom-0 left-0 z-50 ">
       <div
@@ -94,7 +107,7 @@ function SidebarModal({ selectedProduct, cart }) {
       ></div>
       <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
-          <h1>BAG {cart.length < 10 ? "0" + cart.length : 10}</h1>
+          <h1>BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}</h1>
           <h1
             className="cursor-pointer text-[#0018A8]"
             onClick={() => dispatch(handleModal(false))}
@@ -105,15 +118,17 @@ function SidebarModal({ selectedProduct, cart }) {
         <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
           <div className=" bg-white ">
             {/* <h1>*EMPTY*</h1> */}
-            <div className="cart__product--container max-h-[610px] overflow-y-scroll -mr-[4.5px]">
+            <div className="cart__product--container max-h-[607px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
                 const productId = cartItem.id;
                 const count = productCounts[productId] || 1;
+                const inputCount = inputValues[productId] || 1;
+                const updatedPrice = cartItem.price * inputCount;
                 return (
                   <div key={cartItem.id}>
                     <div className="flex justify-between border-t border-black border-b-[#E5E7EB] border-b">
                       <h1>{cartItem.name}</h1>
-                      <p>${cartItem.price}</p>
+                      <p>${updatedPrice.toFixed(2)}</p>
                     </div>
                     <div className="flex w-full  border-black">
                       <div className="">

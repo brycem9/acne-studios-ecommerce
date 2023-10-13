@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import React  from "react";
+import React, { useState }  from "react";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import Footer from "@/components/Footer";
 import SiteMenu from "@/components/SiteMenu";
@@ -9,12 +9,13 @@ import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
 import HomeLink from "@/components/HomeLink";
 
+
  
    
 
 function FW23Denim() {
    const router = useRouter();
-   
+
     
     const handleClick = () => {
         const newUrl = `/info/?id=${products[8].id}`;
@@ -25,11 +26,12 @@ function FW23Denim() {
         const newUrl = `/info/?id=${products[9].id}`;
         router.push(newUrl);
       };
+      const [cart, setCart] = useState([]);
   return (
     
     <div>
       
-      <SidebarModal />
+      <SidebarModal cart={cart} />
       <Navbar />
       <SiteMenu />
       <div className="border-b">
@@ -45,7 +47,7 @@ function FW23Denim() {
         </div>
       </div>
       <div className="flex justify-between ml-3 mr-3">
-        <h1>x items</h1>
+        <h1>10 items</h1>
         <div className="flex">
           <AdjustmentsHorizontalIcon className="w-5" />
           <h1>FILTER</h1>

@@ -14,7 +14,7 @@ export const products = [
         infoImageUrl4: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-jacket-detail.jpg",
         infoImageUrl5: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-jacket-closeup.jpg",
         infoImageUrl6: "/assets/products/denim/jackets/LOOSE-FIT-DENIM-JACKET/loose-fit-denim-product-image.jpg",
-        count: 1
+        count: 1,
     },
     {
         id: "FN-WN-OUTW000514",
@@ -156,7 +156,7 @@ export const products = [
         id: "MultiPocket-Bag",
         name: "MULTIPOCKET BAG",
         url: "",
-        price: "1,550",
+        price: 1550,
         color: "Black/Beige",
         description: "Acne Studios black/beige multipocket bag is crafted from tanned leather with pocket compartments.",
         imageUrl: "/assets/products/bags/MULTIPOCKET-BAG/black-multipocket-info-image.jpg",

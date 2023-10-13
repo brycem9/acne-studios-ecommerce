@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import SidebarModal from "@/components/SidebarModal";
 import SiteMenu from "@/components/SiteMenu";
@@ -46,4 +47,4 @@ function info() {
   );
 }
 
-export default info;
+export default info
