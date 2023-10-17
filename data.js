@@ -139,7 +139,7 @@ export const products = [
         id: "Beige-Multi-Pocket-Bag",
         name: "MULTIPOCKET MINI BAG",
         url: "",
-        price: "1,300",
+        price: 1300,
         color: "Beige/Green",
         description: "Acne Studios beige green multipocket bag is crafted from tanned leather with a chromed finish, complete with pocket compartments and brass finishing.",
         imageUrl: "/assets/products/bags/MULTIPOCKET-MINI-BAG/MPB-info-image.jpg",

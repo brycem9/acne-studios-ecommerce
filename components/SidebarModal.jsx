@@ -28,38 +28,41 @@ function SidebarModal({ selectedProduct, cart }) {
     setTotalQuantity(newTotalQuantity);
   }, [inputValues]);
 
+ 
+  
   useEffect(() => {
     if (cart) {
-      // Calculate the initial total quantity based on cart items
+      
       const initialTotalQuantity = cart.reduce(
         (total, cartItem) => total + (inputValues[cartItem.id] || 1),
         0
       );
       setTotalQuantity(initialTotalQuantity);
+  
+     
+      const newTotalPrice = cart.reduce((total, cartItem) => {
+        const inputCount = inputValues[cartItem.id] || 1;
+        const itemPrice = parseFloat(cartItem.price); 
+        if (!isNaN(itemPrice)) {
+          return total + itemPrice * inputCount;
+        }
+        return total;
+      }, 0);
+  
+    
+      console.log("Total Price:", newTotalPrice);
+  
+      setTotalPrice(newTotalPrice);
     }
   }, [cart, inputValues]);
-
-  useEffect(() => {
-    const newTotalQuantity = Object.values(inputValues).reduce(
-      (total, count) => total + count,
-      0
-    );
-    setTotalQuantity(newTotalQuantity);
   
-    const newTotalPrice = cart.reduce((total, cartItem) => {
-      const inputCount = inputValues[cartItem.id] || 1;
-      return total + cartItem.price * inputCount;
-    }, 0);
-    setTotalPrice(newTotalPrice);
-  }, [inputValues, cart]);
-
   useEffect(() => {
     if (modal) {
       disableBodyScroll();
     } else {
       enableBodyScroll();
     }
-
+  
     return () => {
       enableBodyScroll();
     };
@@ -77,7 +80,7 @@ function SidebarModal({ selectedProduct, cart }) {
       }
       return prevInputValues;
     });
-
+  
     setProductCounts((prevCounts) => {
       const count = prevCounts[productId] || 0;
       if (count < 10) {
@@ -103,12 +106,16 @@ function SidebarModal({ selectedProduct, cart }) {
       }
       return prevInputValues;
     });
+  
   }
+
+  
 
   if (!modal) {
     return;
   }
 
+  
   return (
     <div className="fixed top-0 right-0 bottom-0 left-0 z-50 ">
       <div
@@ -117,9 +124,7 @@ function SidebarModal({ selectedProduct, cart }) {
       ></div>
       <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
-          <h1>
-            BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}
-          </h1>
+          <h1>BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}</h1>
           <h1
             className="cursor-pointer text-[#0018A8]"
             onClick={() => dispatch(handleModal(false))}
@@ -130,7 +135,7 @@ function SidebarModal({ selectedProduct, cart }) {
         <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
           <div className=" bg-white ">
             {/* <h1>*EMPTY*</h1> */}
-            <div className="cart__product--container max-h-[540px] overflow-y-scroll -mr-[4.5px]">
+            <div className="cart__product--container max-h-[530px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
                 const productId = cartItem.id;
                 const count = productCounts[productId] || 1;
@@ -211,7 +216,7 @@ function SidebarModal({ selectedProduct, cart }) {
           <div className="cart-footer pb-1 bg-[#F2F2F2] border-t  absolute bottom-0 left-0 right-0 border-black ">
             <div className="flex p-1 justify-between ">
               <h1>SUBTOTAL</h1>
-              <p>$0.00</p>
+              <p>${totalPrice.toFixed(2)}</p>
             </div>
             <p className="text-gray-500 pl-1 pb-1">
               Sending from the U.S. * No extra import duties.
@@ -224,16 +229,15 @@ function SidebarModal({ selectedProduct, cart }) {
               UPS Ground Order delivered within 2-3 business days
             </p>
             <div className="flex p-1 border-t border-black justify-between">
-              {/* <h1>PAYMENT</h1> */}
               <h1>ESTIMATED TOTAL</h1>
               <h1>${totalPrice.toFixed(2)}</h1>
             </div>
-            <div className="m-3">
+            <div className="m-4">
               <button className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]">
                 CHECKOUT
               </button>
             </div>
-
+            
             <div className="logos pl-1 ">
               <div className="logo-slide justify-between flex">
                 <img
@@ -272,15 +276,11 @@ function SidebarModal({ selectedProduct, cart }) {
                   alt=""
                 />
                 <img
-                  className="mix-blend-multiply mr-2 w-10"
+                  className="mix-blend-multiply mr-1 w-10"
                   src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwb4c5bd98/icons/payment/alipay.png"
                   alt=""
                 />
-                <img
-                  className="mix-blend-multiply mr-1 w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw5818cef8/icons/payment/wechatpay.png"
-                  alt=""
-                />
+      
                 <img
                   className="mix-blend-multiply w-10"
                   src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw10f12e91/icons/payment/applepay.png"
