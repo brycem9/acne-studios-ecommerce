@@ -13,21 +13,24 @@ function info() {
   const router = useRouter();
   const { id } = router.query;
   const selectedProduct = products.find((product) => product.id === id);
-
-  const [cart, setCart] = useState(() => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
+    }
+  }, []);
 
   function addToCart(selectedProduct) {
-    
     const updatedCart = [...cart, selectedProduct];
-    setCart(updatedCart, {...selectedProduct, quantity: 1});
-
+    setCart(updatedCart);
     
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   }
-
 
   return (
     <div>
@@ -35,12 +38,17 @@ function info() {
       <Navbar />
       <SiteMenu />
       <HomeLink />
+      
 
-      <InfoUI
-        product={selectedProduct}
-        addToCart={() => addToCart(selectedProduct)}
-        cart={cart}
-      />
+      {selectedProduct ? (
+        <InfoUI
+          product={selectedProduct}
+          addToCart={() => addToCart(selectedProduct)}
+          cart={cart}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
 
       <Footer />
     </div>
