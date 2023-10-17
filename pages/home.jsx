@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import SidebarModal from "@/components/SidebarModal";
 
 export default function Landing() {
+  const [cart, setCart] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("cart");
+      return storedCart ? JSON.parse(storedCart) : [];
+    }
+    return [];
+  });
   return (
     <div>
-      <SidebarModal/>
+      <SidebarModal cart={cart}/>
       <Navbar />
       <div className="flex justify-center">
         

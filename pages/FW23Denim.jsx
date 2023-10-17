@@ -26,7 +26,13 @@ function FW23Denim() {
         const newUrl = `/info/?id=${products[9].id}`;
         router.push(newUrl);
       };
-      const [cart, setCart] = useState([]);
+      const [cart, setCart] = useState(() => {
+        if (typeof window !== "undefined") {
+          const storedCart = localStorage.getItem("cart");
+          return storedCart ? JSON.parse(storedCart) : [];
+        }
+        return [];
+      });
   return (
     
     <div>
