@@ -137,6 +137,7 @@ function SidebarModal({ selectedProduct, cart }) {
             {/* <h1>*EMPTY*</h1> */}
             <div className="cart__product--container max-h-[530px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
+                ;
                 const productId = cartItem.id;
                 const count = productCounts[productId] || 1;
                 const inputCount = inputValues[productId] || 1;
@@ -160,7 +161,7 @@ function SidebarModal({ selectedProduct, cart }) {
                           <h1 className="">{cartItem.color}</h1>
                         </div>
                         <div className="flex flex-col h-[145px] justify-between">
-                          <h1>ONE SIZE</h1>
+                          <h1>{cartItem.size}</h1>
                           <div className="flex w-full  text-sm border-t ">
                             <button
                               className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"

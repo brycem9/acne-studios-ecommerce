@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import SidebarModal from "@/components/SidebarModal";
 import SiteMenu from "@/components/SiteMenu";
@@ -12,8 +11,10 @@ import InfoUI from "@/components/InfoUI";
 function info() {
   const router = useRouter();
   const { id } = router.query;
-  const selectedProduct = products.find((product) => product.id === id);
+  const selectedProduct = products.find((product) => product.id === id)
   const [cart, setCart] = useState([]);
+  const [selectedSize, setSelectedSize] = useState(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedCart = localStorage.getItem("cart");
@@ -23,10 +24,15 @@ function info() {
     }
   }, []);
 
-  function addToCart(selectedProduct) {
-    const updatedCart = [...cart, selectedProduct];
+  function updateSelectedSize(size) {
+    setSelectedSize(size);
+  }
+
+
+  function addToCart(selectedProduct, selectedSize) {
+    const updatedCart = [...cart, { ...selectedProduct, size: selectedSize }];
     setCart(updatedCart);
-    
+  
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
@@ -38,16 +44,20 @@ function info() {
       <Navbar />
       <SiteMenu />
       <HomeLink />
-      
 
       {selectedProduct ? (
-        <InfoUI
-          product={selectedProduct}
-          addToCart={() => addToCart(selectedProduct)}
-          cart={cart}
-        />
+       <InfoUI
+       product={selectedProduct}
+       addToCart={() => addToCart(selectedProduct, selectedSize)}
+       updateSelectedSize={updateSelectedSize}
+       cart={cart}
+     />
       ) : (
-        <p>Loading...</p>
+        <>
+          <div className="w-[50%] ">
+            <div className="h-[1000px] w-full bg-white"></div>
+          </div>
+        </>
       )}
 
       <Footer />
@@ -55,4 +65,4 @@ function info() {
   );
 }
 
-export default info
+export default info;

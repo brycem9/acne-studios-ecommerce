@@ -1,32 +1,52 @@
-import { CheckIcon, ChevronRightIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  PlusIcon,
+} from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
 import { products } from "../data";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 import { useRouter } from "next/router";
 
-function InfoUI({ product, addToCart, cart }) {
+function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id, "logged")
+  console.log(id, "logged");
   const selectedProduct = products.find((product) => product.id === id);
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
 
-  function addProductToCart(selectedProduct) {
-    addToCart(selectedProduct);
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  function handleSizeClick(size) {
+    if (size === selectedSize) {
+      setSelectedSize(null);
+    } else {
+      setSelectedSize(size);
+      updateSelectedSize(size); // Call the callback to update selectedSize in info.js
+    }
+  }
+
+  function isSizeSelected(size) {
+    return size === selectedSize;
+  }
+
+  function addProductToCart(selectedProduct, selectedSize) {
+    if (selectedSize) {
+      addToCart(selectedProduct, selectedSize); // Pass selectedSize here
+    } else {
+      alert("Please select a size before adding to the cart.");
+    }
   }
 
   function productExistsInCart() {
-     
-      return cart.find(selectedProduct => selectedProduct.id === id)
-
+    return cart.find((selectedProduct) => selectedProduct.id === id);
   }
 
   return (
     <div className="flex border-b border-black">
       <div className="w-[50%] ">
-        <img className="pt-[52px]" src={product.infoImageUrl} alt="" />
+        <img className="pt-[52px] " src={product.infoImageUrl} alt="" />
         <img className="" src={product.infoImageUrl2} alt="" />
         <img className="" src={product.infoImageUrl3} alt="" />
         <img className="" src={product.infoImageUrl4} alt="" />
@@ -45,22 +65,74 @@ function InfoUI({ product, addToCart, cart }) {
         </div>
 
         <div className="flex mt-44">
-          <img
-            className="w-[60px] "
-            src={product.imageUrl}
-            alt=""
-          />
+          <img className="w-[60px] " src={product.imageUrl} alt="" />
         </div>
+        {/* <h1 className="mt-6">Waist</h1> */}
         <div className="w-full h-[46px] mt-5 flex">
-          <div className="w-[40%] hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-            <h1>XXS/XS</h1>
+          <div
+            onClick={() => handleSizeClick("XXS/XS")}
+            className={
+              isSizeSelected("XXS/XS")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("XXS/XS") ? "text-[#0018A8]" : ""}>
+              XXS/XS
+            </h1>
           </div>
-          <div className="w-[40%] hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black h-[44px] p-1 ">
-            <h1>S/M</h1>
+
+          <div
+            onClick={() => handleSizeClick("S/M")}
+            className={
+              isSizeSelected("S/M")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("S/M") ? "text-[#0018A8]" : ""}>
+              S/M
+            </h1>
           </div>
-          <div className="w-[40%] hover:text-[#0018A8] border hover:border-l hover:border hover:border-black  h-[44px] p-1">
-            <h1>L/XL</h1>
+          <div
+            onClick={() => handleSizeClick("L/XL")}
+            className={
+              isSizeSelected("L/XL")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b border-r hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("L/XL") ? "text-[#0018A8]" : ""}>
+              L/XL
+            </h1>
           </div>
+
+          {/* <div className="flex flex-wrap w-full">
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
+              <h1>28</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
+              <h1>29</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
+              <h1>30</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
+              <h1>31</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
+              <h1>32</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black border-r  h-[44px] p-1">
+              <h1>33</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black   h-[44px] p-1">
+              <h1>34</h1>
+            </div>
+            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black border-r  h-[44px] p-1">
+              <h1>36</h1>
+            </div>
+          </div> */}
         </div>
         <div className="bg-[#F7F7F7] h-[70px] p-2 mt-6">
           <h2 className="text-[8px]">UNISEX SIZING</h2>
@@ -71,24 +143,29 @@ function InfoUI({ product, addToCart, cart }) {
         </div>
         <div className="flex items-center h-[100px]">
           {productExistsInCart() ? (
-            <button onClick={() => dispatch(handleModal(true))} className="bg-[#66FF00] sticky top-[147px] text-black w-[95%] h-[60px]">
+            <button
+              onClick={() => dispatch(handleModal(true))}
+              className="bg-[#66FF00] sticky top-[147px] text-black w-[95%] h-[60px]"
+            >
               VIEW BAG
             </button>
           ) : (
             <button
-              onClick={() => addProductToCart(selectedProduct)}
+              onClick={() => addProductToCart(selectedProduct, selectedSize)}
               className="bg-[#0018A8] sticky top-[147px] text-white w-[95%] h-[60px]"
             >
               ADD TO BAG
             </button>
           )}
-            {
-              productExistsInCart() ? <div className="w-[15%] justify-center sticky top-[147px] border border-[#66FF00] h-[60px] flex">
+          {productExistsInCart() ? (
+            <div className="w-[15%] justify-center sticky top-[147px] border border-[#66FF00] h-[60px] flex">
               <CheckIcon className="w-6 text-[#66FF00]" />
-            </div> : <div className="w-[15%] justify-center sticky top-[147px] border border-[#0018A8] h-[60px] flex">
-            <PlusIcon className="w-6 text-[#0018A8]" />
-          </div>
-            }
+            </div>
+          ) : (
+            <div className="w-[15%] justify-center sticky top-[147px] border border-[#0018A8] h-[60px] flex">
+              <PlusIcon className="w-6 text-[#0018A8]" />
+            </div>
+          )}
         </div>
         <div className="border hover:outline  hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
           <div className="flex justify-between  pl-3 pt-2 pb-1">
