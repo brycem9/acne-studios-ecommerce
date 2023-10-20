@@ -8,7 +8,7 @@ import {
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 
-function Navbar() {
+function Navbar(productExistsInCart) {
   const dispatch = useDispatch();
 
   return (
@@ -52,6 +52,7 @@ function Navbar() {
                 <UserIcon className="w-6 pr-2" />
                 <h1>ACCOUNT</h1>
               </button>
+              
               <button
                 onClick={() => dispatch(handleModal(true))}
                 className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"

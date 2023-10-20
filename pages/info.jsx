@@ -41,7 +41,7 @@ function info() {
   return (
     <div>
       <SidebarModal selectedProduct={selectedProduct} cart={cart} />
-      <Navbar />
+      <Navbar  />
       <SiteMenu />
       <HomeLink />
 

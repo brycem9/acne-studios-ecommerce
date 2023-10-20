@@ -14,9 +14,224 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   const { id } = router.query;
   console.log(id, "logged");
   const selectedProduct = products.find((product) => product.id === id);
+  console.log(selectedProduct);
   const dispatch = useDispatch();
-
   const [selectedSize, setSelectedSize] = useState(null);
+  const sizingType = selectedProduct.sizing;
+  const sizingToHTMLMap = {
+    SML: (
+      <>
+        <div className="flex">
+          <div
+            onClick={() => handleSizeClick("XXS/XS")}
+            className={
+              isSizeSelected("XXS/XS")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("XXS/XS") ? "text-[#0018A8]" : ""}>
+              XXS/XS
+            </h1>
+          </div>
+
+          <div
+            onClick={() => handleSizeClick("S/M")}
+            className={
+              isSizeSelected("S/M")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("S/M") ? "text-[#0018A8]" : ""}>
+              S/M
+            </h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("L/XL")}
+            className={
+              isSizeSelected("L/XL")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b border-r hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("L/XL") ? "text-[#0018A8]" : ""}>
+              L/XL
+            </h1>
+          </div>
+        </div>
+        <div className="bg-[#F7F7F7] h-[70px] p-2 mt-6">
+          <h2 className="text-[8px]">UNISEX SIZING</h2>
+          <p className="text-gray-500 text-[13px]">
+            Unisex sizes run large for women. Select 1 size smaller than your
+            normal size.
+          </p>
+        </div>
+      </>
+    ),
+    waistSize: (
+      <>
+        <h1 className="mt-4 mb-3">Waist</h1>
+        <div className="flex flex-wrap w-full">
+          <div
+            onClick={() => handleSizeClick("28")}
+            className={
+              isSizeSelected("28")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>28</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("29")}
+            className={
+              isSizeSelected("29")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>29</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("30")}
+            className={
+              isSizeSelected("30")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>30</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("31")}
+            className={
+              isSizeSelected("31")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>31</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("32")}
+            className={
+              isSizeSelected("32")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>32</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("33")}
+            className={
+              isSizeSelected("33")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b border-r hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>33</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("34")}
+            className={
+              isSizeSelected("34")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b  hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>34</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("36")}
+            className={
+              isSizeSelected("36")
+                ? "w-[calc(100%/6)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b border-r hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>36</h1>
+          </div>
+        </div>
+      </>
+    ),
+    oneSize: (
+      <><div className="mt-6">
+        <div
+          onClick={() => handleSizeClick("ONE SIZE")}
+          className={
+            isSizeSelected("ONE SIZE")
+              ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+              : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-r border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+          }
+        >
+          <h1 className={isSizeSelected("ONE SIZE") ? "text-[#0018A8]" : ""}>
+            ONE SIZE
+          </h1>
+        </div>
+      </div>
+        
+      </>
+    ),
+    ringSize: (
+      <>
+      <h1 className=" pt-3 mb-3">Ring Size</h1>
+        <div className="flex w-full">
+          <div
+            onClick={() => handleSizeClick("4")}
+            className={
+              isSizeSelected("4")
+                ? "w-[calc(100%/5)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/5)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>4</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("5")}
+            className={
+              isSizeSelected("5")
+                ? "w-[calc(100%/5)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/5)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>5</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("6")}
+            className={
+              isSizeSelected("6")
+                ? "w-[calc(100%/5)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/5)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>6</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("7")}
+            className={
+              isSizeSelected("7")
+                ? "w-[calc(100%/5)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/5)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>7</h1>
+          </div>
+          <div
+            onClick={() => handleSizeClick("8")}
+            className={
+              isSizeSelected("8")
+                ? "w-[calc(100%/5)] outline outline-1 -outline-offset-1 outline-[#0018A8] bg-[#e8f0fe] cursor-pointer text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[calc(100%/5)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l border-r hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1>8</h1>
+          </div>
+        </div>
+      </>
+    ),
+  };
 
   function handleSizeClick(size) {
     if (size === selectedSize) {
@@ -67,81 +282,12 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         <div className="flex mt-44">
           <img className="w-[60px] " src={product.imageUrl} alt="" />
         </div>
-        {/* <h1 className="mt-6">Waist</h1> */}
+
         <div className="w-full h-[46px] mt-5 flex">
-          <div
-            onClick={() => handleSizeClick("XXS/XS")}
-            className={
-              isSizeSelected("XXS/XS")
-                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-            }
-          >
-            <h1 className={isSizeSelected("XXS/XS") ? "text-[#0018A8]" : ""}>
-              XXS/XS
-            </h1>
-          </div>
-
-          <div
-            onClick={() => handleSizeClick("S/M")}
-            className={
-              isSizeSelected("S/M")
-                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-            }
-          >
-            <h1 className={isSizeSelected("S/M") ? "text-[#0018A8]" : ""}>
-              S/M
-            </h1>
-          </div>
-          <div
-            onClick={() => handleSizeClick("L/XL")}
-            className={
-              isSizeSelected("L/XL")
-                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-b border-r hover:border-l hover:border hover:border-black  h-[44px] p-1"
-            }
-          >
-            <h1 className={isSizeSelected("L/XL") ? "text-[#0018A8]" : ""}>
-              L/XL
-            </h1>
-          </div>
-
-          {/* <div className="flex flex-wrap w-full">
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-              <h1>28</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-              <h1>29</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-              <h1>30</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-              <h1>31</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1">
-              <h1>32</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black border-r  h-[44px] p-1">
-              <h1>33</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black   h-[44px] p-1">
-              <h1>34</h1>
-            </div>
-            <div className="w-[calc(100%/6)] cursor-pointer hover:text-[#0018A8]  border-l border-b hover:border-l hover:border hover:border-black border-r  h-[44px] p-1">
-              <h1>36</h1>
-            </div>
-          </div> */}
+          <div className="w-full">{sizingToHTMLMap[sizingType]}</div>
         </div>
-        <div className="bg-[#F7F7F7] h-[70px] p-2 mt-6">
-          <h2 className="text-[8px]">UNISEX SIZING</h2>
-          <p className="text-gray-500 text-[13px]">
-            Unisex sizes run large for women. Select 1 size smaller than your
-            normal size.
-          </p>
-        </div>
-        <div className="flex items-center h-[100px]">
+
+        <div className="flex items-center h-[100px] mt-24">
           {productExistsInCart() ? (
             <button
               onClick={() => dispatch(handleModal(true))}
@@ -203,20 +349,20 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         </div>
         <div className="mt-6 ml-[17px]  w-full ">
           <ul className="capitalize ">
-            <li className="list-info p-1">Oversized unisex fit</li>
-            <li className="list-info p-1">Hip length</li>
-            <li className="list-info p-1">Dropped shoulders</li>
-            <li className="list-info p-1">Extra long sleeves</li>
-            <li className="list-info p-1">Button-up closure</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo1}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo2}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo3}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo4}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo5}</li>
             <li className="list-info p-1">
-              Female model is 179 cm / 5′11 and wears a size S/M
+            {selectedProduct.extraInfo6}
             </li>
             <li className="list-info p-1 ">
-              Male model is 189 cm / 6′2 and wears a size S/M
+            {selectedProduct.extraInfo7}
             </li>
-            <li className="list-info p-1 ">Style ID: FN-UX-OUTW000018</li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo8}</li>
             <li className="list-info p-1 ">
-              Main material: 100% organic cotton
+            {selectedProduct.extraInfo9}
             </li>
           </ul>
         </div>
