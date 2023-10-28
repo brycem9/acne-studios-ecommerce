@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 import { products } from "../data";
+import stripePromise from "../stripe";
+import { loadStripe } from '@stripe/stripe-js'
 
 function SidebarModal({ selectedProduct, cart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
@@ -50,7 +52,7 @@ function SidebarModal({ selectedProduct, cart }) {
       }, 0);
   
     
-      console.log("Total Price:", newTotalPrice);
+      // console.log("Total Price:", newTotalPrice);
   
       setTotalPrice(newTotalPrice);
     }
@@ -109,6 +111,22 @@ function SidebarModal({ selectedProduct, cart }) {
   
   }
 
+  const handleCheckout = async () => {
+    const stripe = await loadStripe('pk_test_51O2K9CJLILYwU6kbKkN2KR67etjZLE2n1k10XmzlANbNBkRq56WcZH6nKI35KEcT7MpdN8qAWm73S87LFUiHpGqZ00XEsc1mFH');
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: cart.map((cartItem) => ({
+        price: cartItem.stripePriceId,
+        quantity: inputValues[cartItem.id] || 1,
+      })),
+      mode: 'payment', 
+      successUrl: 'http://localhost:3000/success', 
+      cancelUrl: 'https://localhost:3000/cancel',   
+    });
+  
+    if (error) {
+      console.error(error);
+    }
+  };
   
 
   if (!modal) {
@@ -234,7 +252,8 @@ function SidebarModal({ selectedProduct, cart }) {
               <h1>${totalPrice.toFixed(2)}</h1>
             </div>
             <div className="m-4">
-              <button className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]">
+              <button onClick={handleCheckout}
+              className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]">
                 CHECKOUT
               </button>
             </div>

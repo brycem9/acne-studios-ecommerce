@@ -12,9 +12,9 @@ import { useRouter } from "next/router";
 function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id, "logged");
+  // console.log(id, "logged");
   const selectedProduct = products.find((product) => product.id === id);
-  console.log(selectedProduct);
+  // console.log(selectedProduct);
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState(null);
   const sizingType = selectedProduct.sizing;

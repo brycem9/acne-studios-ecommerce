@@ -12,7 +12,9 @@
  
 }
 
-
+.hide-scroll-bar {
+  overflow: hidden;
+}
 
 @keyframes slide {
   0% {
