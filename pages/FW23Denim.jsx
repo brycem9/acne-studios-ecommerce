@@ -62,9 +62,9 @@ function FW23Denim() {
       <HomeLink/>
       <div className="">
         
-        <div className="flex">
+        <div className="flex product-wrapper">
           <div onClick={handleClick} className="kylie-container cursor-pointer flex flex-col justify-end">
-            <div  className="flex justify-between  text-[#0018A8] text-xs bg-white p-2">
+            <div  className="flex product-info justify-between  text-[#0018A8] text-xs bg-white p-2">
               <h1>
                 MULTIPOCKET MINI BAG{" "}
                 <sup className="tracking-wider  text-black">RUNWAY SHOW</sup>{" "}
@@ -80,14 +80,14 @@ function FW23Denim() {
         </div>
       </div>
       <div className="">
-        <div className="flex">
+        <div className="flex product-wrapper">
           <div className="product-container flex flex-wrap">
             {products.slice(4, 8).map((product) => (
               <Product product={product} key={product.id} />
             ))}
           </div>
           <div onClick={handleClick2} className="kylie-container2 cursor-pointer flex flex-col justify-end">
-            <div className="flex justify-between text-xs text-[#0018A8] bg-white p-2">
+            <div className="flex product-info justify-between text-xs text-[#0018A8] bg-white p-2">
               <h1>
                 MULTIPOCKET BAG{" "}
                 <sup className="text-black tracking-wider">RUNWAY SHOW</sup>{" "}

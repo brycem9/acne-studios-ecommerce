@@ -4,6 +4,7 @@ import {
   QuestionMarkCircleIcon,
   UserIcon,
   ShoppingBagIcon,
+  Bars3Icon,
 } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
@@ -12,9 +13,9 @@ function Navbar(productExistsInCart) {
   const dispatch = useDispatch();
 
   return (
-    <nav className="flex  z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
+    <nav className="flex navbar-container z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
       <div className="basis-[50%]">
-        <div className="flex">
+        <div className="flex navbar-content">
           <a href="/home" className="basis-[50%] hover:text-gray-500">
             <div>ACNESTUDIOS.COM</div>
           </a>
@@ -31,6 +32,12 @@ function Navbar(productExistsInCart) {
             </a>
           </ul>
         </div>
+        <div className="mobile-content">
+          <div className="flex">
+            <Bars3Icon className="w-3.5" />
+            <h1>MENU</h1>
+          </div>
+        </div>
       </div>
       <div>
         <div className="flex ">
@@ -46,19 +53,19 @@ function Navbar(productExistsInCart) {
             <div className="flex items-center ml-6">
               <button className="flex items-center nav--button">
                 <QuestionMarkCircleIcon className="w-6 pr-2" />
-                <h1 className="whitespace-nowrap">CLIENT SERVICES</h1>
+                <h1 className="whitespace-nowrap nav__link--title">CLIENT SERVICES</h1>
               </button>
               <button className="flex items-center nav--button">
                 <UserIcon className="w-6 pr-2" />
-                <h1>ACCOUNT</h1>
+                <h1 className="nav__link--title">ACCOUNT</h1>
               </button>
-              
+
               <button
                 onClick={() => dispatch(handleModal(true))}
                 className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"
               >
                 <ShoppingBagIcon className="w-6 pr-2" />
-                <h1>BAG</h1>
+                <h1 className="nav__link--title">BAG</h1>
               </button>
             </div>
           </div>

@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div className="border-t-gray-100 border z-40">
-      <div className="flex justify-between z-50 p-1 pl-3 pb-10 tracking-wider">
+      {/* <div className="flex justify-between z-50 p-1 pl-3 pb-10 tracking-wider">
         <ul>
           <li className="footer--link">live chat <sup className="text-red-600">not available</sup> </li>
           <li className="footer--link">call <sup className="text-red-600">not available</sup></li>
@@ -49,7 +49,30 @@ function Footer() {
       </div>
       <div className="border-t border-gray-300 text-sm p-3 text-gray-500">
         <p>*Please note that some products may be sent from Sweden due to unavailable shipments from US. Import duties included.</p>
+      </div> */}
+      <div>
+        <ul>
+          <li>CLIENT SERVICES</li>
+          <li>ACCOUNT</li>
+          <li>STORES</li>
+          <li>NEWSLETTER</li>
+          <li>COMPANY</li>
+          <li>SHIPPING TO UNITED STATES(ENGLISH)</li>
+        </ul>
       </div>
+      <div className="flex justify-between">
+        <h1>© ACNE STUDIOS 2023</h1>
+        <ul className="flex">
+          <li>IG</li>
+          <li>FB</li>
+          <li>TW</li>
+          <li>PT</li>
+          <li>WB</li>
+        </ul>
+      </div>
+      <div className="border-t border-gray-300 text-sm p-3 text-gray-500">
+        <p>*Please note that some products may be sent from Sweden due to unavailable shipments from US. Import duties included.</p>
+      </div> 
     </div>
   );
 }
