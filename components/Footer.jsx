@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="border-t-gray-100 border z-40">
-      {/* <div className="flex justify-between z-50 p-1 pl-3 pb-10 tracking-wider">
+    <div className="border-t-gray-100 border  z-40">
+      <div className="flex justify-between footer z-50 p-1 pl-3 pb-10 tracking-wider">
         <ul>
           <li className="footer--link">live chat <sup className="text-red-600">not available</sup> </li>
           <li className="footer--link">call <sup className="text-red-600">not available</sup></li>
@@ -39,7 +39,7 @@ function Footer() {
           <li className="footer--link">weibo</li>
         </ul>
       </div>
-      <div className="flex justify-between w-full p-1 pl-3 ">
+      <div className="flex footer justify-between w-full p-1 pl-3 ">
         <ul>
           <li className="footer--link"> <span className="text-black">© ACNE STUDIOS 2023</span>  </li>
         </ul>
@@ -47,32 +47,36 @@ function Footer() {
         <li className="footer--link">shipping to united states(English)</li>
         </ul>
       </div>
-      <div className="border-t border-gray-300 text-sm p-3 text-gray-500">
+      <div className="border-t footer border-gray-300 text-sm p-3 text-gray-500">
         <p>*Please note that some products may be sent from Sweden due to unavailable shipments from US. Import duties included.</p>
-      </div> */}
-      <div>
-        <ul>
-          <li>CLIENT SERVICES</li>
-          <li>ACCOUNT</li>
-          <li>STORES</li>
-          <li>NEWSLETTER</li>
-          <li>COMPANY</li>
-          <li>SHIPPING TO UNITED STATES(ENGLISH)</li>
+      </div>
+      <div className="mobile-footer">
+        <ul className="text-xs">
+          <li className="border-b border-1 pb-5 p-2">CLIENT SERVICES</li>
+          <li className="border-b border-1 pb-5 p-2">ACCOUNT</li>
+          <li className="border-b border-1 pb-5 p-2">STORES</li>
+          <li className="border-b border-1 pb-5 p-2">NEWSLETTER</li>
+          <li className="border-b border-1 pb-5 p-2">COMPANY</li>
+          <li className="border-b border-1 pb-5 p-2">SHIPPING TO UNITED STATES (ENGLISH)</li>
+          <li className="border-b border-1 p-16"></li>
         </ul>
       </div>
-      <div className="flex justify-between">
+      <div className="footer-container mobile-footer">
+       <div className="flex justify-between text-xs pb-5 p-1 ">
         <h1>© ACNE STUDIOS 2023</h1>
-        <ul className="flex">
-          <li>IG</li>
-          <li>FB</li>
-          <li>TW</li>
-          <li>PT</li>
-          <li>WB</li>
+        <ul className="flex text text-[#0018A8]">
+          <a href="http://www.instagram.com/acnestudios"><li className="pr-3">IG</li></a>
+          <a href="http://www.facebook.com/acnestudios"><li className="pr-3">FB</li></a>
+          <a href="http://www.twitter.com/acnestudios"><li className="pr-3">TW</li></a>
+          <a href="http://www.pinterest.com/AcneStudios"><li className="pr-3">PT</li></a>
+          <li className="pr-3">WB</li>
         </ul>
       </div>
-      <div className="border-t border-gray-300 text-sm p-3 text-gray-500">
+      <div className="border-t mobile-footer border-gray-300 text-sm p-3 text-gray-500">
         <p>*Please note that some products may be sent from Sweden due to unavailable shipments from US. Import duties included.</p>
-      </div> 
+      </div>  
+      </div>
+      
     </div>
   );
 }

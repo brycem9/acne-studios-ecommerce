@@ -238,7 +238,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
       setSelectedSize(null);
     } else {
       setSelectedSize(size);
-      updateSelectedSize(size); // Call the callback to update selectedSize in info.js
+      updateSelectedSize(size); 
     }
   }
 
@@ -248,7 +248,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
 
   function addProductToCart(selectedProduct, selectedSize) {
     if (selectedSize) {
-      addToCart(selectedProduct, selectedSize); // Pass selectedSize here
+      addToCart(selectedProduct, selectedSize);
     } else {
       alert("Please select a size before adding to the cart.");
     }
