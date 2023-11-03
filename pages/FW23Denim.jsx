@@ -43,7 +43,7 @@ function FW23Denim() {
       <div className="border-b">
         <div className="mt-20 ml-3">
           <h1 className="text-xs pb-3">KYLIE JENNER FW23 DENIM</h1>
-          <p className="text-xs">
+          <p className="text-xs pb-3 text">
             Kylie Jenner is the new face of Acne Studios denim, photographed by
             Carlijn Jacobs in Los Angeles. Discover the new 2023 <br />{" "}
             silhouette, ultra-oversized and unisex, alongside other iconic denim
@@ -52,8 +52,8 @@ function FW23Denim() {
           </p>
         </div>
       </div>
-      <div className="flex justify-between ml-3 mr-3">
-        <h1>10 items</h1>
+      <div className="flex items-center justify-between ml-3 mr-3">
+        <h1 className="text-sm text-stone-500">10 items</h1>
         <div className="flex">
           <AdjustmentsHorizontalIcon className="w-5" />
           <h1>FILTER</h1>

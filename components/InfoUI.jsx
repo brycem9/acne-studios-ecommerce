@@ -8,8 +8,18 @@ import { products } from "../data";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 import { useRouter } from "next/router";
+import Carousel from "./Carousel";
 
 function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
+
+  const slides = [
+      product.infoImageUrl,
+      product.infoImageUrl2,
+      product.infoImageUrl3,
+      product.infoImageUrl4,
+      product.infoImageUrl5,
+      product.infoImageUrl6,
+  ]
   const router = useRouter();
   const { id } = router.query;
   // console.log(id, "logged");
@@ -260,7 +270,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
 
   return (
     <div className="flex border-b border-black">
-      <div className="w-[50%] ">
+      {/* <div className="w-[50%] ">
         <img className="pt-[52px] " src={product.infoImageUrl} alt="" />
         <img className="" src={product.infoImageUrl2} alt="" />
         <img className="" src={product.infoImageUrl3} alt="" />
@@ -366,6 +376,16 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             </li>
           </ul>
         </div>
+      </div> */}
+      <div>
+        <Carousel>
+          {slides.map((s) => (
+            <img src={s} />
+          ))}
+        </Carousel>
+      </div>
+      <div>
+        
       </div>
     </div>
   );
