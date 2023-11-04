@@ -260,8 +260,8 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   }
 
   return (
-    <div className="flex border-b border-black">
-      {/* <div className="w-[50%] ">
+    <div className="flex border-b  border-black">
+      <div className="w-[50%] product-info-Ui">
         <img className="pt-[52px] " src={product.infoImageUrl} alt="" />
         <img className="" src={product.infoImageUrl2} alt="" />
         <img className="" src={product.infoImageUrl3} alt="" />
@@ -269,7 +269,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         <img className="" src={product.infoImageUrl5} alt="" />
         <img className="" src={product.infoImageUrl6} alt="" />
       </div>
-      <div className="w-[30%] h-[1200px] sticky -top-[279px]  p-3 text-xs">
+      <div className="w-[30%] product-info-Ui h-[1200px] sticky -top-[279px]  p-3 text-xs">
         <div className="fixed  w-[31%] z-10 h-12 top-[15px]  mt-[44px] bg-white ">
           <div className="mt-12  bg-white flex justify-between ">
             <h1 className="mt-8">{product.name}</h1>
@@ -367,8 +367,8 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             </li>
           </ul>
         </div>
-      </div> */}
-      <div>
+      </div>
+      <div className="mobileUI">
         <div>
           <Carousel
             images={[
@@ -381,17 +381,17 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             ]}
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex text-sm p-3 justify-between">
           <h1>{product.name}</h1>
-          <h1>{product.price}</h1>
+          <h1>${product.price}</h1>
         </div>
-        <div>
+        <div className="pb-3 pl-3 text-sm">
           <h1> {product.color} </h1>
         </div>
-        <div>
+        <div className="text-xs p-3">
         {sizingToHTMLMap[sizingType]}
         </div>
-        <div className="flex items-center h-[90px] mt-2">
+        <div className="flex items-center p-3 h-[90px] mt-2">
           {productExistsInCart() ? (
             <button
               onClick={() => dispatch(handleModal(true))}
@@ -417,7 +417,8 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             </div>
           )}
         </div>
-        <div className="border hover:outline  hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
+        <div className="text-sm">
+          <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
           <div className="flex justify-between  pl-3 pt-2 pb-1">
             <h1 className="text-[#0018A8]">
               FREE DELIVERY{" "}
@@ -429,14 +430,14 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             Estimated delivery Oct 02<sup>nd</sup>. Sending from the US *{" "}
           </p>
         </div>
-        <div className="border hover:outline hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+        <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
           <div className="flex justify-between pl-3 pt-2 pb-1">
             <h1 className="text-[#0018A8]">FREE RETURNS ONLINE AND IN-STORE</h1>
             <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
           </div>
           <p className="pl-3 pb-1">Use enclosed return slip</p>
         </div>
-        <div className="border hover:outline hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+        <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
           <div className="flex justify-between -z-10 pl-3 pt-2 pb-1">
             <h1 className="text-[#0018A8]">
               PICK UP IN STORE{" "}
@@ -448,10 +449,12 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             Select a size to view in-store availability
           </p>
         </div>
-        <div className="mt-10">
+        </div>
+        
+        <div className="mt-10 p-3">
           <p>{product.description}</p>
         </div>
-        <div className="mt-6 ml-[17px]  w-full ">
+        <div className="mt-6 ml-[17px] p-3 text-sm  w-full ">
           <ul className="capitalize ">
             <li className="list-info p-1">{selectedProduct.extraInfo1}</li>
             <li className="list-info p-1">{selectedProduct.extraInfo2}</li>
@@ -469,6 +472,9 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             {selectedProduct.extraInfo9}
             </li>
           </ul>
+        </div>
+        <div className="pb-8 p-2 text-xs text-[#0018A8] border-t border-gray-400 border-b mb-12 mt-12">
+          <h1>NEED HELP?</h1>
         </div>
       </div>
     </div>

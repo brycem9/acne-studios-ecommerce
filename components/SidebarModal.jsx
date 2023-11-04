@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 import { products } from "../data";
 import stripePromise from "../stripe";
-import { loadStripe } from '@stripe/stripe-js'
+import { loadStripe } from "@stripe/stripe-js";
 
 function SidebarModal({ selectedProduct, cart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
@@ -30,41 +30,36 @@ function SidebarModal({ selectedProduct, cart }) {
     setTotalQuantity(newTotalQuantity);
   }, [inputValues]);
 
- 
-  
   useEffect(() => {
     if (cart) {
-      
       const initialTotalQuantity = cart.reduce(
         (total, cartItem) => total + (inputValues[cartItem.id] || 1),
         0
       );
       setTotalQuantity(initialTotalQuantity);
-  
-     
+
       const newTotalPrice = cart.reduce((total, cartItem) => {
         const inputCount = inputValues[cartItem.id] || 1;
-        const itemPrice = parseFloat(cartItem.price); 
+        const itemPrice = parseFloat(cartItem.price);
         if (!isNaN(itemPrice)) {
           return total + itemPrice * inputCount;
         }
         return total;
       }, 0);
-  
-    
+
       // console.log("Total Price:", newTotalPrice);
-  
+
       setTotalPrice(newTotalPrice);
     }
   }, [cart, inputValues]);
-  
+
   useEffect(() => {
     if (modal) {
       disableBodyScroll();
     } else {
       enableBodyScroll();
     }
-  
+
     return () => {
       enableBodyScroll();
     };
@@ -82,7 +77,7 @@ function SidebarModal({ selectedProduct, cart }) {
       }
       return prevInputValues;
     });
-  
+
     setProductCounts((prevCounts) => {
       const count = prevCounts[productId] || 0;
       if (count < 10) {
@@ -108,32 +103,31 @@ function SidebarModal({ selectedProduct, cart }) {
       }
       return prevInputValues;
     });
-  
   }
 
   const handleCheckout = async () => {
-    const stripe = await loadStripe('pk_test_51O2K9CJLILYwU6kbKkN2KR67etjZLE2n1k10XmzlANbNBkRq56WcZH6nKI35KEcT7MpdN8qAWm73S87LFUiHpGqZ00XEsc1mFH');
+    const stripe = await loadStripe(
+      "pk_test_51O2K9CJLILYwU6kbKkN2KR67etjZLE2n1k10XmzlANbNBkRq56WcZH6nKI35KEcT7MpdN8qAWm73S87LFUiHpGqZ00XEsc1mFH"
+    );
     const { error } = await stripe.redirectToCheckout({
       lineItems: cart.map((cartItem) => ({
         price: cartItem.stripePriceId,
         quantity: inputValues[cartItem.id] || 1,
       })),
-      mode: 'payment', 
-      successUrl: 'http://localhost:3000/success', 
-      cancelUrl: 'https://localhost:3000/cancel',   
+      mode: "payment",
+      successUrl: "http://localhost:3000/success",
+      cancelUrl: "https://localhost:3000/cancel",
     });
-  
+
     if (error) {
       console.error(error);
     }
   };
-  
 
   if (!modal) {
     return;
   }
 
-  
   return (
     <div className="fixed top-0 right-0 bottom-0 left-0 z-50 ">
       <div
@@ -142,7 +136,9 @@ function SidebarModal({ selectedProduct, cart }) {
       ></div>
       <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
-          <h1>BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}</h1>
+          <h1>
+            BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}
+          </h1>
           <h1
             className="cursor-pointer text-[#0018A8]"
             onClick={() => dispatch(handleModal(false))}
@@ -155,7 +151,6 @@ function SidebarModal({ selectedProduct, cart }) {
             {/* <h1>*EMPTY*</h1> */}
             <div className="cart__product--container max-h-[538px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
-                ;
                 const productId = cartItem.id;
                 const count = productCounts[productId] || 1;
                 const inputCount = inputValues[productId] || 1;
@@ -247,65 +242,68 @@ function SidebarModal({ selectedProduct, cart }) {
             <p className="text-gray-500 pb-1 pl-1">
               UPS Ground Order delivered within 2-3 business days
             </p>
-            <div className="flex p-1 border-t border-black justify-between">
-              <h1>ESTIMATED TOTAL</h1>
-              <h1>${totalPrice.toFixed(2)}</h1>
-            </div>
-            <div className="m-4">
-              <button onClick={handleCheckout}
-              className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]">
-                CHECKOUT
-              </button>
-            </div>
-            
-            <div className="logos pl-1 ">
-              <div className="logo-slide justify-between flex">
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw8a495d30/icons/payment/visa.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwa0263b78/icons/payment/mastercard.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw0a1a9378/icons/payment/amex.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwee634d27/icons/payment/diners.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw2bc8cb2f/icons/payment/discover.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply ml-2 mr-2 w-8"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw10dfb11f/icons/payment/paypal.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply  mr-2 w-7 h-2 mt-[5.7px]"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwcf397498/icons/payment/klarna.png"
-                  alt=""
-                />
-                <img
-                  className="mix-blend-multiply mr-1 w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwb4c5bd98/icons/payment/alipay.png"
-                  alt=""
-                />
-      
-                <img
-                  className="mix-blend-multiply w-10"
-                  src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw10f12e91/icons/payment/applepay.png"
-                  alt=""
-                />
+            <div className="mobile-sidebar">
+              <div className="flex p-1 border-t  border-black justify-between">
+                <h1>ESTIMATED TOTAL</h1>
+                <h1>${totalPrice.toFixed(2)}</h1>
+              </div>
+              <div className="m-4">
+                <button
+                  onClick={handleCheckout}
+                  className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]"
+                >
+                  CHECKOUT
+                </button>
+              </div>{" "}
+              <div className="logos pl-1 ">
+                <div className="logo-slide justify-between flex">
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw8a495d30/icons/payment/visa.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwa0263b78/icons/payment/mastercard.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw0a1a9378/icons/payment/amex.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwee634d27/icons/payment/diners.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw2bc8cb2f/icons/payment/discover.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply ml-2 mr-2 w-8"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw10dfb11f/icons/payment/paypal.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply  mr-2 w-7 h-2 mt-[5.7px]"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwcf397498/icons/payment/klarna.png"
+                    alt=""
+                  />
+                  <img
+                    className="mix-blend-multiply mr-1 w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dwb4c5bd98/icons/payment/alipay.png"
+                    alt=""
+                  />
+
+                  <img
+                    className="mix-blend-multiply w-10"
+                    src="https://www.acnestudios.com/on/demandware.static/-/Library-Sites-acne/default/dw10f12e91/icons/payment/applepay.png"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>

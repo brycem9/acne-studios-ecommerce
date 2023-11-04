@@ -211,6 +211,13 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 700px;
   } 
 
+  .mobileUI {
+    display: none;
+  }
+
+
+ 
+
   @media (max-width: 1160px) {
   
 
@@ -287,7 +294,13 @@ input[type="number"]::-webkit-outer-spin-button {
       
       
     }
+    .mobileUI {
+      display: block;
+    }
 
+    .product-info-Ui {
+      display: none;
+    }
     .product-img-container {
       width: 50%; 
       padding-top: 70%; 
@@ -310,6 +323,12 @@ input[type="number"]::-webkit-outer-spin-button {
     .product-img-container {
       width: 100%;
       padding-top: 140%;
+    }
+    .mobile-sidebar {
+      padding-bottom: 32px;
+    }
+    .cart__product--container {
+      max-height: 506px;
     }
   }
 
