@@ -28,7 +28,7 @@ function Carousel({ images }) {
   return (
     <div className="overflow-hidden relative">
       <div
-        className="mt-8 flex transition-transform ease-out duration-500"
+        className="mt-12 flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {images.map((image, index) => (
