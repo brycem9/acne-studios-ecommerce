@@ -368,7 +368,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
           </ul>
         </div>
       </div>
-      <div className="mobileUI">
+      <div className="mobileUI overflow-x-hidden">
         <div>
           <Carousel
             images={[
