@@ -11,15 +11,6 @@ import { useRouter } from "next/router";
 import Carousel from "./Carousel";
 
 function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
-
-  const slides = [
-      product.infoImageUrl,
-      product.infoImageUrl2,
-      product.infoImageUrl3,
-      product.infoImageUrl4,
-      product.infoImageUrl5,
-      product.infoImageUrl6,
-  ]
   const router = useRouter();
   const { id } = router.query;
   // console.log(id, "logged");
@@ -167,26 +158,26 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
       </>
     ),
     oneSize: (
-      <><div className="mt-6">
-        <div
-          onClick={() => handleSizeClick("ONE SIZE")}
-          className={
-            isSizeSelected("ONE SIZE")
-              ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-              : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-r border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
-          }
-        >
-          <h1 className={isSizeSelected("ONE SIZE") ? "text-[#0018A8]" : ""}>
-            ONE SIZE
-          </h1>
+      <>
+        <div className="mt-6">
+          <div
+            onClick={() => handleSizeClick("ONE SIZE")}
+            className={
+              isSizeSelected("ONE SIZE")
+                ? "w-[40%] cursor-pointer bg-[#e8f0fe] outline outline-1 -outline-offset-1 outline-[#0018A8] text-[#0018A8] border-t border-l border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+                : "w-[40%] cursor-pointer hover:text-[#0018A8] border-t border-l border-r border-b hover:border-l hover:border hover:border-black  h-[44px] p-1"
+            }
+          >
+            <h1 className={isSizeSelected("ONE SIZE") ? "text-[#0018A8]" : ""}>
+              ONE SIZE
+            </h1>
+          </div>
         </div>
-      </div>
-        
       </>
     ),
     ringSize: (
       <>
-      <h1 className=" pt-3 mb-3">Ring Size</h1>
+        <h1 className=" pt-3 mb-3">Ring Size</h1>
         <div className="flex w-full">
           <div
             onClick={() => handleSizeClick("4")}
@@ -248,7 +239,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
       setSelectedSize(null);
     } else {
       setSelectedSize(size);
-      updateSelectedSize(size); 
+      updateSelectedSize(size);
     }
   }
 
@@ -378,14 +369,107 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         </div>
       </div> */}
       <div>
-        <Carousel>
-          {slides.map((s) => (
-            <img src={s} />
-          ))}
-        </Carousel>
-      </div>
-      <div>
-        
+        <div>
+          <Carousel
+            images={[
+              product.infoImageUrl,
+              product.infoImageUrl2,
+              product.infoImageUrl3,
+              product.infoImageUrl4,
+              product.infoImageUrl5,
+              product.infoImageUrl6,
+            ]}
+          />
+        </div>
+        <div className="flex justify-between">
+          <h1>{product.name}</h1>
+          <h1>{product.price}</h1>
+        </div>
+        <div>
+          <h1> {product.color} </h1>
+        </div>
+        <div>
+        {sizingToHTMLMap[sizingType]}
+        </div>
+        <div className="flex items-center h-[90px] mt-2">
+          {productExistsInCart() ? (
+            <button
+              onClick={() => dispatch(handleModal(true))}
+              className="bg-[#66FF00] sticky top-[147px] text-black w-[95%] h-[60px]"
+            >
+              VIEW BAG
+            </button>
+          ) : (
+            <button
+              onClick={() => addProductToCart(selectedProduct, selectedSize)}
+              className="bg-[#0018A8] sticky top-[147px] text-white w-[95%] h-[60px]"
+            >
+              ADD TO BAG
+            </button>
+          )}
+          {productExistsInCart() ? (
+            <div className="w-[15%] justify-center sticky top-[147px] border border-[#66FF00] h-[60px] flex">
+              <CheckIcon className="w-6 text-[#66FF00]" />
+            </div>
+          ) : (
+            <div className="w-[15%] justify-center sticky top-[147px] border border-[#0018A8] h-[60px] flex">
+              <PlusIcon className="w-6 text-[#0018A8]" />
+            </div>
+          )}
+        </div>
+        <div className="border hover:outline  hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
+          <div className="flex justify-between  pl-3 pt-2 pb-1">
+            <h1 className="text-[#0018A8]">
+              FREE DELIVERY{" "}
+              <sup className="font-bold text-black">60607, CHICAGO**</sup>{" "}
+            </h1>
+            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+          </div>
+          <p className="pl-3 pb-1">
+            Estimated delivery Oct 02<sup>nd</sup>. Sending from the US *{" "}
+          </p>
+        </div>
+        <div className="border hover:outline hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+          <div className="flex justify-between pl-3 pt-2 pb-1">
+            <h1 className="text-[#0018A8]">FREE RETURNS ONLINE AND IN-STORE</h1>
+            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+          </div>
+          <p className="pl-3 pb-1">Use enclosed return slip</p>
+        </div>
+        <div className="border hover:outline hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+          <div className="flex justify-between -z-10 pl-3 pt-2 pb-1">
+            <h1 className="text-[#0018A8]">
+              PICK UP IN STORE{" "}
+              <sup className="text-black font-bold">6 STORES</sup>{" "}
+            </h1>
+            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+          </div>
+          <p className="pl-3 pb-1">
+            Select a size to view in-store availability
+          </p>
+        </div>
+        <div className="mt-10">
+          <p>{product.description}</p>
+        </div>
+        <div className="mt-6 ml-[17px]  w-full ">
+          <ul className="capitalize ">
+            <li className="list-info p-1">{selectedProduct.extraInfo1}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo2}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo3}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo4}</li>
+            <li className="list-info p-1">{selectedProduct.extraInfo5}</li>
+            <li className="list-info p-1">
+            {selectedProduct.extraInfo6}
+            </li>
+            <li className="list-info p-1 ">
+            {selectedProduct.extraInfo7}
+            </li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo8}</li>
+            <li className="list-info p-1 ">
+            {selectedProduct.extraInfo9}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
