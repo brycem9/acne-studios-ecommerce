@@ -185,7 +185,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .img-container2 {
-    /* position: relative;
+    position: relative;
     width: 100vw;
     height: 0; 
     padding-bottom: calc(100% / (14.5 / 9));
@@ -197,10 +197,10 @@ input[type="number"]::-webkit-outer-spin-button {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url("/assets/kylie/denim2-dCOMPRESSED.jpg");
+      background-image: url("/assets/kylie/denim2-d.jpg");
       background-size: cover;
       background-repeat: no-repeat;
-    } */
+    }
   }
   
   .text-link {
