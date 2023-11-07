@@ -5,14 +5,16 @@ import { handleModal } from "@/redux/SidebarSlice";
 import { products } from "../data";
 import stripePromise from "../stripe";
 import { loadStripe } from "@stripe/stripe-js";
+import { setTotalQuantity, selectTotalQuantity } from "../redux/SidebarSlice";
 
 function SidebarModal({ selectedProduct, cart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
   const dispatch = useDispatch();
   const [productCounts, setProductCounts] = useState({});
   const [inputValues, setInputValues] = useState({});
-  const [totalQuantity, setTotalQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+  const totalQuantity = useSelector(selectTotalQuantity)
+  // const [totalQuantity, setTotalQuantity] = useState(1);
 
   const enableBodyScroll = () => {
     document.body.classList.remove("body-scroll-lock");
@@ -27,7 +29,7 @@ function SidebarModal({ selectedProduct, cart }) {
       (total, count) => total + count,
       1
     );
-    setTotalQuantity(newTotalQuantity);
+    dispatch(setTotalQuantity(newTotalQuantity)); // Update totalQuantity in Redux
   }, [inputValues]);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ function SidebarModal({ selectedProduct, cart }) {
         (total, cartItem) => total + (inputValues[cartItem.id] || 1),
         0
       );
-      setTotalQuantity(initialTotalQuantity);
+      dispatch(setTotalQuantity(initialTotalQuantity));
 
       const newTotalPrice = cart.reduce((total, cartItem) => {
         const inputCount = inputValues[cartItem.id] || 1;
@@ -134,7 +136,7 @@ function SidebarModal({ selectedProduct, cart }) {
         onClick={() => dispatch(handleModal(false))}
         className="bg-black cursor-pointer w-full hover:bg-opacity-30 absolute top-0 left-0 bg-opacity-40 z-50 h-screen"
       ></div>
-      <div className="bg-white w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
+      <div className="bg-white sidebar-container w-[380px] z-[51] h-screen top-0 right-0 absolute  text-xs">
         <div className="flex justify-between p-2">
           <h1>
             BAG {totalQuantity < 10 ? "0" + totalQuantity : totalQuantity}
@@ -152,7 +154,6 @@ function SidebarModal({ selectedProduct, cart }) {
             <div className="cart__product--container max-h-[538px] overflow-y-scroll -mr-[4.5px]">
               {cart.map((cartItem) => {
                 const productId = cartItem.id;
-                const count = productCounts[productId] || 1;
                 const inputCount = inputValues[productId] || 1;
                 const updatedPrice = cartItem.price * inputCount;
                 return (
@@ -175,7 +176,7 @@ function SidebarModal({ selectedProduct, cart }) {
                         </div>
                         <div className="flex flex-col h-[145px] justify-between">
                           <h1>{cartItem.size}</h1>
-                          <div className="flex w-full  text-sm border-t ">
+                          <div className="flex w-full text-sm border-t ">
                             <button
                               className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"
                               onClick={() => decrementCount(productId)}
@@ -227,7 +228,7 @@ function SidebarModal({ selectedProduct, cart }) {
               })}
             </div>
           </div>
-          <div className="cart-footer pb-1 bg-[#F2F2F2] border-t  absolute bottom-0 left-0 right-0 border-black ">
+          <div className="cart-footer pb-1 bg-[#F2F2F2] border-t absolute bottom-0 left-0 right-0 border-black ">
             <div className="flex p-1 justify-between ">
               <h1>SUBTOTAL</h1>
               <p>${totalPrice.toFixed(2)}</p>
@@ -243,14 +244,14 @@ function SidebarModal({ selectedProduct, cart }) {
               UPS Ground Order delivered within 2-3 business days
             </p>
             <div className="mobile-sidebar">
-              <div className="flex p-1 border-t  border-black justify-between">
+              <div className="flex p-1 border-t border-black justify-between">
                 <h1>ESTIMATED TOTAL</h1>
                 <h1>${totalPrice.toFixed(2)}</h1>
               </div>
               <div className="m-4">
                 <button
                   onClick={handleCheckout}
-                  className="bg-[#66FF00] sticky  top-[147px] text-black w-full h-[45px]"
+                  className="bg-[#66FF00] sticky top-[147px] text-black w-full h-[45px]"
                 >
                   CHECKOUT
                 </button>

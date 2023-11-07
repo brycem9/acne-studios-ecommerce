@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MagnifyingGlassIcon,
   QuestionMarkCircleIcon,
@@ -8,12 +8,23 @@ import {
 } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
+import { handleMobileMenu } from "@/redux/MobileMenuSlice";
+import { useSelector } from "react-redux";
+import { selectTotalQuantity } from "../redux/SidebarSlice";
 
-function Navbar(productExistsInCart) {
+function Navbar({cart}) {
   const dispatch = useDispatch();
+  const [hasItemsInCart, setHasItemsInCart] = useState(false);
+  const totalQuantity = useSelector(selectTotalQuantity);
+
+  useEffect(() => {
+    // Update the hasItemsInCart state based on the cart length
+    setHasItemsInCart(cart.length > 0);
+  }, [cart]);
+  
 
   return (
-    <nav className="flex navbar-container z-20 fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 ">
+    <nav className={"flex navbar-container  z-20  fixed top-0 left-0 right-0 bg-white items-center h-[30px] p-3 "}>
       <div className="basis-[50%]">
         <div className="flex navbar-content">
           <a href="/home" className="basis-[50%] hover:text-gray-500">
@@ -33,9 +44,9 @@ function Navbar(productExistsInCart) {
           </ul>
         </div>
         <div className="mobile-content">
-          <div className="flex">
+          <div onClick={() => dispatch(handleMobileMenu(true))}  className="flex cursor-pointer">
             <Bars3Icon className="w-3.5" />
-            <h1>MENU</h1>
+            <h1 className="pl-1">MENU</h1>
           </div>
         </div>
       </div>
@@ -53,7 +64,9 @@ function Navbar(productExistsInCart) {
             <div className="flex items-center ml-6">
               <button className="flex items-center nav--button">
                 <QuestionMarkCircleIcon className="w-6 pr-2" />
-                <h1 className="whitespace-nowrap nav__link--title">CLIENT SERVICES</h1>
+                <h1 className="whitespace-nowrap nav__link--title">
+                  CLIENT SERVICES
+                </h1>
               </button>
               <button className="flex items-center nav--button">
                 <UserIcon className="w-6 pr-2" />
@@ -64,8 +77,16 @@ function Navbar(productExistsInCart) {
                 onClick={() => dispatch(handleModal(true))}
                 className="flex transition-all duration-150 hover:text-gray-500 items-center nav--button"
               >
-                <ShoppingBagIcon className="w-6 pr-2" />
-                <h1 className="nav__link--title">BAG</h1>
+                <ShoppingBagIcon
+                  className={`w-5 pr-1 ${
+                    hasItemsInCart ? "fill-[#66FF00] text-green-400"  : ""
+                  }`}
+                />
+                <div className="flex items-center justify-center">
+                  <h1 className="nav__link--title">
+                  {hasItemsInCart ? totalQuantity : 'BAG'}
+                  </h1>
+                </div>
               </button>
             </div>
           </div>

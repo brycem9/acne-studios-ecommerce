@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { handleModal } from "@/redux/SidebarSlice";
 import { useRouter } from "next/router";
 import Carousel from "./Carousel";
+import MobileMenu from "./MobileMenu";
 
 function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   const router = useRouter();
@@ -259,7 +260,10 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
     return cart.find((selectedProduct) => selectedProduct.id === id);
   }
 
+
+
   return (
+   
     <div className="flex border-b  border-black">
       <div className="w-[50%] product-info-Ui">
         <img className="pt-[52px] " src={product.infoImageUrl} alt="" />

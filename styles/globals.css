@@ -328,7 +328,16 @@ input[type="number"]::-webkit-outer-spin-button {
       padding-bottom: 32px;
     }
     .cart__product--container {
-      max-height: 506px;
+      max-height: 535px;
+    }
+    .sidebar-container {
+      width: 330px;
+    }
+    .cart-footer {
+      padding-bottom: 32px;
+    }
+    .acne-splash {
+      display: none;
     }
   }
 

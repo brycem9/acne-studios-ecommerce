@@ -15,6 +15,15 @@ export default function Home() {
     <main>
       <Navbar /> 
       <Header />
+      <div className="flex justify-center">
+        
+        <a href="/home">
+          <img
+            className="acne-splash w-[75%] pb-9 z-30 fixed top-[47%] left-[50%] mix-blend-luminosity"
+            src="/assets/logos/denim-logo.png"
+          />
+        </a>
+      </div>
       <Footer />
     </main>
   );

@@ -8,6 +8,7 @@ import { products } from "../data";
 import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
 import HomeLink from "@/components/HomeLink";
+import MobileMenu from "@/components/MobileMenu";
 
 
  
@@ -37,8 +38,9 @@ function FW23Denim() {
     
     <div>
       
+      <MobileMenu/>
       <SidebarModal cart={cart} />
-      <Navbar />
+      <Navbar cart={cart} />
       <SiteMenu />
       <div className="border-b">
         <div className="mt-20 ml-3">

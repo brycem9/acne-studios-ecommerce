@@ -7,6 +7,7 @@ import HomeLink from "@/components/HomeLink";
 import { useRouter } from "next/router";
 import { products } from "../data";
 import InfoUI from "@/components/InfoUI";
+import MobileMenu from "@/components/MobileMenu";
 
 function info() {
   const router = useRouter();
@@ -14,6 +15,7 @@ function info() {
   const selectedProduct = products.find((product) => product.id === id)
   const [cart, setCart] = useState([]);
   const [selectedSize, setSelectedSize] = useState(null);
+ 
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -40,8 +42,9 @@ function info() {
 
   return (
     <div>
+      <MobileMenu/>
       <SidebarModal selectedProduct={selectedProduct} cart={cart} />
-      <Navbar  />
+      <Navbar cart={cart} />
       <SiteMenu />
       <HomeLink />
 

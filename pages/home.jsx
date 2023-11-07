@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import SidebarModal from "@/components/SidebarModal";
+import MobileMenu from "@/components/MobileMenu";
 
 export default function Landing() {
   const [cart, setCart] = useState(() => {
@@ -14,8 +15,9 @@ export default function Landing() {
   });
   return (
     <div>
+      <MobileMenu/>
       <SidebarModal cart={cart}/>
-      <Navbar />
+      <Navbar cart={cart}/>
       <div className="flex justify-center">
         
         <a href="/home">
