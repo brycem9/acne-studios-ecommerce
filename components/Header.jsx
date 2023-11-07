@@ -50,6 +50,7 @@ function Header() {
             onMouseLeave={handleMouseLeave2}
           >
             <div className="img-container2">
+              <img className="" src="\assets\kylie\denim2-dCOMPRESSED.jpg" alt="" />
               <div className="text-container">
                 {hovered2 ? (
                 <h1 className="text-xs tracking-wider sticky text-link pl-3 z-10 left-0 top-8">
