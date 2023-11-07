@@ -24,7 +24,7 @@ if (!mobileMenu) {
 
   return (
    
-    <div className="absolute top-0 bg-white h-screen w-full z-[100]">
+    <div className="fixed top-0 bg-white h-screen w-full z-[100]">
       <div className=" border-b border-black">
         <div className=" flex justify-between pb-6 text-xs p-2">
           <a href="/home">
@@ -42,35 +42,35 @@ if (!mobileMenu) {
         </div>
       </div>
       <ul className="text-xs">
-        <li className="border-b pb-6 p-2 border-gray-400 flex justify-between items-center">
+        <li className="border-b pb-6 p-2 border-gray-200 flex justify-between items-center">
           SEARCH{" "}
         </li>
-        <li className="border-b pb-6 p-2 border-gray-400 flex justify-between items-center">
+        <li className="border-b pb-6 p-2 border-gray-200 flex justify-between items-center">
           WOMAN <ChevronRightIcon className="w-4" />
         </li>
-        <li className="border-b pb-6 p-2 border-gray-400 flex justify-between items-center">
+        <li className="border-b pb-6 p-2 border-gray-200 flex justify-between items-center">
           MAN <ChevronRightIcon className="w-4" />
         </li>
-        <li className="border-b pb-10 p-2 border-gray-400"></li>
-        <li className="border-b pb-6 p-2 border-gray-400 flex justify-between items-center">
+        <li className="border-b pb-10 p-2 border-gray-200"></li>
+        <li className="border-b pb-6 p-2 border-gray-200 flex justify-between items-center">
           ACCOUNT <ChevronRightIcon className="w-4" />
         </li>
-        <li className="border-b pb-6 p-2 border-gray-400">STORES</li>
-        <li className="border-b pb-6 p-2 border-gray-400">
+        <li className="border-b pb-6 p-2 border-gray-200">STORES</li>
+        <li className="border-b pb-6 p-2 border-gray-200">
           SHIPPING TO UNITED STATES (ENGLISH)
         </li>
-        <li className="border-b pb-10 p-2 border-gray-400"></li>
-        <li className="border-b pb-6 p-2 border-gray-400 flex justify-between items-center">
+        <li className="border-b pb-10 p-2 border-gray-200"></li>
+        <li className="border-b pb-6 p-2 border-gray-200 flex justify-between items-center">
           CLIENT SERVICES <ChevronRightIcon className="w-4" />
         </li>
-        <li className="border-b pb-6 p-2 border-gray-400">
+        <li className="border-b pb-6 p-2 border-gray-200">
           LIVE CHAT <sup className="text-red-500">NOT AVAILABLE</sup>{" "}
         </li>
-        <li className="border-b pb-6 p-2 border-gray-400">
+        <li className="border-b pb-6 p-2 border-gray-200">
           CALL <sup className="text-red-500">NOT AVAILABLE</sup> <br /> +1(555)
           555-5555
         </li>
-        <li className=" pb-6 p-2  border-gray-400">
+        <li className=" pb-6 p-2  border-gray-200">
           EMAIL <br />{" "}
           <span className="lowercase">clientservices@acnestudios.com</span>{" "}
         </li>

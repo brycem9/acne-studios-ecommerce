@@ -16,7 +16,7 @@ export default function Landing() {
   return (
     <div>
       <MobileMenu/>
-      <SidebarModal cart={cart}/>
+      <SidebarModal cart={cart} />
       <Navbar cart={cart}/>
       <div className="flex justify-center">
         

@@ -40,10 +40,19 @@ function info() {
     }
   }
 
+  function handleRemoveFromCart(productId) {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  }
+
   return (
     <div>
       <MobileMenu/>
-      <SidebarModal selectedProduct={selectedProduct} cart={cart} />
+      <SidebarModal selectedProduct={selectedProduct} cart={cart} removeFromCart={handleRemoveFromCart} />
       <Navbar cart={cart} />
       <SiteMenu />
       <HomeLink />

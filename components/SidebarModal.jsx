@@ -7,7 +7,7 @@ import stripePromise from "../stripe";
 import { loadStripe } from "@stripe/stripe-js";
 import { setTotalQuantity, selectTotalQuantity } from "../redux/SidebarSlice";
 
-function SidebarModal({ selectedProduct, cart }) {
+function SidebarModal({ selectedProduct, cart, removeFromCart }) {
   const modal = useSelector((state) => state.sidebar.boolean);
   const dispatch = useDispatch();
   const [productCounts, setProductCounts] = useState({});
@@ -106,6 +106,8 @@ function SidebarModal({ selectedProduct, cart }) {
       return prevInputValues;
     });
   }
+
+  
 
   const handleCheckout = async () => {
     const stripe = await loadStripe(
@@ -219,7 +221,7 @@ function SidebarModal({ selectedProduct, cart }) {
                           </div>
                         </div>
                         <div className="flex justify-end border-t">
-                          <h1 className="text-[#0018A8]">X REMOVE</h1>
+                          <h1 onClick={() => removeFromCart(cartItem.id)}  className="text-[#0018A8] cursor-pointer">X REMOVE</h1>
                         </div>
                       </div>
                     </div>

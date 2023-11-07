@@ -18,8 +18,9 @@ function Navbar({cart}) {
   const totalQuantity = useSelector(selectTotalQuantity);
 
   useEffect(() => {
-    // Update the hasItemsInCart state based on the cart length
-    setHasItemsInCart(cart.length > 0);
+    if (Array.isArray(cart)) {
+      setHasItemsInCart(cart.length > 0);
+    }
   }, [cart]);
   
 

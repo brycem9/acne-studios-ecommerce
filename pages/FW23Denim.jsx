@@ -14,7 +14,7 @@ import MobileMenu from "@/components/MobileMenu";
  
    
 
-function FW23Denim() {
+function FW23Denim({removeFromCart}) {
    const router = useRouter();
 
     
