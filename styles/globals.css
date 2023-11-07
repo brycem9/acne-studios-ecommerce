@@ -184,7 +184,7 @@ input[type="number"]::-webkit-outer-spin-button {
  
 
 
-.img-container2 {
+/* .img-container2 {
     position: relative;
     width: 100vw;
     height: 0; 
@@ -197,10 +197,27 @@ input[type="number"]::-webkit-outer-spin-button {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url("/assets/kylie/denim2-dPNGG.png");
+      background-image: url("/assets/kylie/denim2-d.jpg");
       background-size: cover;
       background-repeat: no-repeat;
     }
+  } */
+
+  .img-container2 {
+    position: relative;
+    width: 100vw;
+    height: 0;
+    padding-bottom: calc(100% / (14.5 / 9));
+    
+  }
+
+  .img-container2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .text-link {
