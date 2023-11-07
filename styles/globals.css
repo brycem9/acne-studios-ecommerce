@@ -130,7 +130,7 @@ input[type="number"]::-webkit-outer-spin-button {
   @apply text-xs cursor-pointer hover:text-blue-950  text-[#0018A8] pt-0.5 pb-0.5;
 }
 
-.img-container {
+/* .img-container {
     position: relative;
     width: 100vw;
     height: 0;
@@ -149,8 +149,24 @@ input[type="number"]::-webkit-outer-spin-button {
       background-repeat: no-repeat;
       z-index: -1;
     }
+  } */
+
+  .img-container {
+    position: relative;
+    width: 100vw;
+    height: 0;
+    padding-bottom: calc(100% / (16 / 9));
   }
 
+  .img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
 
  .product-container {
   width: 50%;

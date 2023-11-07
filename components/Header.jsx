@@ -29,6 +29,7 @@ function Header() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
+         
           {hovered ? (
             <h1 className="text-xs tracking-wider sticky pb-2 pl-3 z-10 left-0 top-9">
               KYLIE JENNER FW23 DENIM {">"} SHOP NOW
@@ -38,7 +39,7 @@ function Header() {
               KYLIE JENNER FW23 DENIM
             </h1>
           )}{" "}
-          <div className="img-container "></div>
+          <div className="img-container "> <img src="\assets\kylie\kylie-d.jpg" alt="" /></div>
         </div>
       </Link>
 
