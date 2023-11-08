@@ -16,14 +16,12 @@
   overflow: hidden;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+.disable-scrolling {
+  overflow: hidden;
 }
+
+
+
 
 
 
@@ -158,6 +156,8 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-bottom: calc(100% / (16 / 9));
   }
 
+
+
   .img-container img {
     position: absolute;
     top: 0;
@@ -177,7 +177,37 @@ input[type="number"]::-webkit-outer-spin-button {
   
  }
 
+ .animated-skeleton {
+  animation: skeleton-animation 2000ms infinite;
+  
+ }
 
+ .skeleton-bg {
+  animation: skeleton-background 1700ms infinite;
+ }
+
+ @keyframes skeleton-background {
+  0% {
+opacity: 100%;
+  }
+  50% {
+opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+ }
+
+ @keyframes skeleton-animation {
+  0% {
+    transform: translateX(0%);
+    opacity: 0%;
+  }
+  100%
+ {
+  transform: translateX(150%);
+  opacity: 100%;
+ } }
 
  .kylie-container {
   width: 50%;

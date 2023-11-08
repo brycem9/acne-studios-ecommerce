@@ -19,6 +19,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
   // console.log(selectedProduct);
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const sizingType = selectedProduct.sizing;
   const sizingToHTMLMap = {
     SML: (
@@ -235,6 +236,49 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
     ),
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+     
+      const imageElements = [
+        product.infoImageUrl,
+        product.infoImageUrl2,
+        product.infoImageUrl3,
+        product.infoImageUrl4,
+        product.infoImageUrl5,
+        product.infoImageUrl6,
+      ];
+
+      const promises = imageElements.map((src) => {
+        return new Promise((resolve) => {
+          const image = new Image();
+          image.src = src;
+          image.onload = resolve;
+          image.onerror = resolve; 
+        });
+      });
+
+      Promise.all(promises)
+        .then(() => {
+          setImagesLoaded(true);
+        })
+        .catch(() => {
+         
+        });
+      
+    }, 500); 
+
+    return () => {
+      clearTimeout(timer); 
+    };
+  }, [
+    product.infoImageUrl,
+    product.infoImageUrl2,
+    product.infoImageUrl3,
+    product.infoImageUrl4,
+    product.infoImageUrl5,
+    product.infoImageUrl6,
+  ]);
+
   function handleSizeClick(size) {
     if (size === selectedSize) {
       setSelectedSize(null);
@@ -260,18 +304,27 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
     return cart.find((selectedProduct) => selectedProduct.id === id);
   }
 
-
-
   return (
-   
     <div className="flex border-b  border-black">
       <div className="w-[50%] product-info-Ui">
-        <img className="pt-[52px] " src={product.infoImageUrl} alt="" />
-        <img className="" src={product.infoImageUrl2} alt="" />
-        <img className="" src={product.infoImageUrl3} alt="" />
-        <img className="" src={product.infoImageUrl4} alt="" />
-        <img className="" src={product.infoImageUrl5} alt="" />
-        <img className="" src={product.infoImageUrl6} alt="" />
+        {imagesLoaded ? (
+          <>
+            {" "}
+            <img className="pt-[52px] " src={product.infoImageUrl} alt="" />
+            <img className="" src={product.infoImageUrl2} alt="" />
+            <img className="" src={product.infoImageUrl3} alt="" />
+            <img className="" src={product.infoImageUrl4} alt="" />
+            <img className="" src={product.infoImageUrl5} alt="" />
+            <img className="" src={product.infoImageUrl6} alt="" />
+          </>
+        ) : (
+          <div className="h-screen skeleton-bg overflow-x-hidden w-full flex items-center bg-slate-300">
+            <div className="animated-skeleton mt-9 h-[80%] bg-slate-100 blur-lg rounded-2xl
+             opacity-30 w-[70%]">
+
+            </div>
+          </div>
+        )}
       </div>
       <div className="w-[30%] product-info-Ui h-[1200px] sticky -top-[279px]  p-3 text-xs">
         <div className="fixed  w-[31%] z-10 h-12 top-[15px]  mt-[44px] bg-white ">
@@ -359,16 +412,10 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             <li className="list-info p-1">{selectedProduct.extraInfo3}</li>
             <li className="list-info p-1">{selectedProduct.extraInfo4}</li>
             <li className="list-info p-1">{selectedProduct.extraInfo5}</li>
-            <li className="list-info p-1">
-            {selectedProduct.extraInfo6}
-            </li>
-            <li className="list-info p-1 ">
-            {selectedProduct.extraInfo7}
-            </li>
+            <li className="list-info p-1">{selectedProduct.extraInfo6}</li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo7}</li>
             <li className="list-info p-1 ">{selectedProduct.extraInfo8}</li>
-            <li className="list-info p-1 ">
-            {selectedProduct.extraInfo9}
-            </li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo9}</li>
           </ul>
         </div>
       </div>
@@ -392,9 +439,7 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         <div className="pb-3 pl-3 text-sm">
           <h1> {product.color} </h1>
         </div>
-        <div className="text-xs p-3">
-        {sizingToHTMLMap[sizingType]}
-        </div>
+        <div className="text-xs p-3">{sizingToHTMLMap[sizingType]}</div>
         <div className="flex items-center p-3 h-[90px] mt-2">
           {productExistsInCart() ? (
             <button
@@ -423,38 +468,40 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
         </div>
         <div className="text-sm">
           <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black ">
-          <div className="flex justify-between  pl-3 pt-2 pb-1">
-            <h1 className="text-[#0018A8]">
-              FREE DELIVERY{" "}
-              <sup className="font-bold text-black">60607, CHICAGO**</sup>{" "}
-            </h1>
-            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+            <div className="flex justify-between  pl-3 pt-2 pb-1">
+              <h1 className="text-[#0018A8]">
+                FREE DELIVERY{" "}
+                <sup className="font-bold text-black">60607, CHICAGO**</sup>{" "}
+              </h1>
+              <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+            </div>
+            <p className="pl-3 pb-1">
+              Estimated delivery Oct 02<sup>nd</sup>. Sending from the US *{" "}
+            </p>
           </div>
-          <p className="pl-3 pb-1">
-            Estimated delivery Oct 02<sup>nd</sup>. Sending from the US *{" "}
-          </p>
-        </div>
-        <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
-          <div className="flex justify-between pl-3 pt-2 pb-1">
-            <h1 className="text-[#0018A8]">FREE RETURNS ONLINE AND IN-STORE</h1>
-            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+          <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+            <div className="flex justify-between pl-3 pt-2 pb-1">
+              <h1 className="text-[#0018A8]">
+                FREE RETURNS ONLINE AND IN-STORE
+              </h1>
+              <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+            </div>
+            <p className="pl-3 pb-1">Use enclosed return slip</p>
           </div>
-          <p className="pl-3 pb-1">Use enclosed return slip</p>
-        </div>
-        <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
-          <div className="flex justify-between -z-10 pl-3 pt-2 pb-1">
-            <h1 className="text-[#0018A8]">
-              PICK UP IN STORE{" "}
-              <sup className="text-black font-bold">6 STORES</sup>{" "}
-            </h1>
-            <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+          <div className="border hover:outline m-3 hover:-outline-offset-1 outline-1 hover:cursor-pointer outline-black">
+            <div className="flex justify-between -z-10 pl-3 pt-2 pb-1">
+              <h1 className="text-[#0018A8]">
+                PICK UP IN STORE{" "}
+                <sup className="text-black font-bold">6 STORES</sup>{" "}
+              </h1>
+              <ChevronRightIcon className="text-gray-500 w-4 mr-1" />
+            </div>
+            <p className="pl-3 pb-1">
+              Select a size to view in-store availability
+            </p>
           </div>
-          <p className="pl-3 pb-1">
-            Select a size to view in-store availability
-          </p>
         </div>
-        </div>
-        
+
         <div className="mt-10 p-3">
           <p>{product.description}</p>
         </div>
@@ -465,16 +512,10 @@ function InfoUI({ product, addToCart, updateSelectedSize, cart }) {
             <li className="list-info p-1">{selectedProduct.extraInfo3}</li>
             <li className="list-info p-1">{selectedProduct.extraInfo4}</li>
             <li className="list-info p-1">{selectedProduct.extraInfo5}</li>
-            <li className="list-info p-1">
-            {selectedProduct.extraInfo6}
-            </li>
-            <li className="list-info p-1 ">
-            {selectedProduct.extraInfo7}
-            </li>
+            <li className="list-info p-1">{selectedProduct.extraInfo6}</li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo7}</li>
             <li className="list-info p-1 ">{selectedProduct.extraInfo8}</li>
-            <li className="list-info p-1 ">
-            {selectedProduct.extraInfo9}
-            </li>
+            <li className="list-info p-1 ">{selectedProduct.extraInfo9}</li>
           </ul>
         </div>
         <div className="pb-8 p-2 text-xs text-[#0018A8] border-t border-gray-400 border-b mb-12 mt-12">
