@@ -13,7 +13,7 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
   const [productCounts, setProductCounts] = useState({});
   const [inputValues, setInputValues] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const totalQuantity = useSelector(selectTotalQuantity)
+  const totalQuantity = useSelector(selectTotalQuantity);
   // const [totalQuantity, setTotalQuantity] = useState(1);
 
   const enableBodyScroll = () => {
@@ -107,8 +107,6 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
     });
   }
 
-  
-
   const handleCheckout = async () => {
     const stripe = await loadStripe(
       "pk_test_51O2K9CJLILYwU6kbKkN2KR67etjZLE2n1k10XmzlANbNBkRq56WcZH6nKI35KEcT7MpdN8qAWm73S87LFUiHpGqZ00XEsc1mFH"
@@ -151,84 +149,102 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
           </h1>
         </div>
         <div className="bg-[#F2F2F2]  -black z-[48] border flex flex-col justify-between h-full">
-          <div className=" bg-white ">
-            {/* <h1>*EMPTY*</h1> */}
-            <div className="cart__product--container max-h-[538px] overflow-y-scroll -mr-[4.5px]">
-              {cart.map((cartItem) => {
-                const productId = cartItem.id;
-                const inputCount = inputValues[productId] || 1;
-                const updatedPrice = cartItem.price * inputCount;
-                return (
-                  <div key={cartItem.id}>
-                    <div className="flex justify-between border-t border-black border-b-[#E5E7EB] border-b">
-                      <h1>{cartItem.name}</h1>
-                      <p>${updatedPrice.toFixed(2)}</p>
-                    </div>
-                    <div className="flex w-full  border-black">
-                      <div className="">
-                        <img
-                          className="w-[128.5px]"
-                          src={cartItem.imageUrl}
-                          alt=""
-                        />
+          <div className="">
+            {cart.length === 0 ? (
+              <div className="flex justify-center items-center h-[100vh] pb-60">
+                <h1>*EMPTY*</h1>
+              </div>
+            ) : (
+              <div className="cart__product--container max-h-[538px] bg-white overflow-y-scroll -mr-[4.5px]">
+                {cart.map((cartItem) => {
+                  const productId = cartItem.id;
+                  const inputCount = inputValues[productId] || 1;
+                  const updatedPrice = cartItem.price * inputCount;
+                  return (
+                    <div key={cartItem.id}>
+                      <div className="flex justify-between border-t p-1 border-black border-b-[#E5E7EB] border-b">
+                        <h1>{cartItem.name}</h1>
+                        <p>${updatedPrice.toFixed(2)}</p>
                       </div>
-                      <div className="w-[320px]">
-                        <div className="border-b">
-                          <h1 className="">{cartItem.color}</h1>
+                      <div className="flex w-full  border-black">
+                        <div className="">
+                          <img
+                            className="w-[128.5px] h-[87.5%] object-cover"
+                            src={cartItem.imageUrl}
+                            alt=""
+                          />
                         </div>
-                        <div className="flex flex-col h-[145px] justify-between">
-                          <h1>{cartItem.size}</h1>
-                          <div className="flex w-full text-sm border-t ">
-                            <button
-                              className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"
-                              onClick={() => decrementCount(productId)}
+                        <div className="w-[320px]">
+                          <div className="border-b p-1">
+                            <h1 className="">{cartItem.color}</h1>
+                          </div>
+                          <div className="flex flex-col h-[145px] justify-between">
+                            <h1 className="p-1">{cartItem.size}</h1>
+                            <div className="flex w-full text-sm border-t ">
+                              <button
+                                className=" hover:outline outline-1 -outline-offset-1 w-1/3 p-1"
+                                onClick={() => decrementCount(productId)}
+                              >
+                                —
+                              </button>
+                              <input
+                                type="number"
+                                placeholder="1"
+                                value={inputValues[productId] || 1}
+                                onChange={(event) => {
+                                  const newValue = parseInt(
+                                    event.target.value,
+                                    10
+                                  );
+                                  if (newValue >= 1 && newValue <= 10) {
+                                    setInputValues((prevInputValues) => ({
+                                      ...prevInputValues,
+                                      [productId]: newValue,
+                                    }));
+                                  }
+                                }}
+                                onBlur={() => {
+                                  const newValue = inputValues[productId] || 1;
+                                  if (newValue < 1) {
+                                    setInputValues((prevInputValues) => ({
+                                      ...prevInputValues,
+                                      [productId]: 1,
+                                    }));
+                                  } else if (newValue > 10) {
+                                    setInputValues((prevInputValues) => ({
+                                      ...prevInputValues,
+                                      [productId]: 10,
+                                    }));
+                                  }
+                                }}
+                                min={1}
+                                max={10}
+                                className="w-1/3 pl-[40px] hover:outline focus:outline focus:outline-black -outline-offset-1 outline-1 focus:bg-[#e8f0fe] bg-[#F2F2F2]"
+                              />
+
+                              <button
+                                onClick={() => incrementCount(productId)}
+                                className="text-[25px] font-light hover:outline outline-1 -outline-offset-1 w-1/3"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+                          <div className="flex justify-end border-t">
+                            <h1
+                              onClick={() => removeFromCart(cartItem.id)}
+                              className="text-[#0018A8] p-1 cursor-pointer"
                             >
-                              —
-                            </button>
-                            <input
-                              type="number"
-                              placeholder="1"
-                              value={inputValues[productId] || 1}
-                              onChange={(event) => {
-                                const newValue = parseInt(
-                                  event.target.value,
-                                  10
-                                );
-                                setInputValues((prevInputValues) => ({
-                                  ...prevInputValues,
-                                  [productId]: newValue,
-                                }));
-                              }}
-                              onBlur={() => {
-                                const newValue = inputValues[productId] || 1;
-                                if (newValue < 1 || newValue > 10) {
-                                  setInputValues((prevInputValues) => ({
-                                    ...prevInputValues,
-                                    [productId]: 10,
-                                  }));
-                                }
-                              }}
-                              max={10}
-                              min={1}
-                              className="w-1/3 pl-[40px] hover:outline focus:outline focus:outline-black -outline-offset-1 outline-1  focus:bg-[#e8f0fe] bg-[#F2F2F2]"
-                            />
-                            <button
-                              onClick={() => incrementCount(productId)}
-                              className="text-[25px] font-light hover:outline outline-1 -outline-offset-1 w-1/3"
-                            >
-                              +
-                            </button>
+                              X REMOVE
+                            </h1>
                           </div>
                         </div>
-                        <div className="flex justify-end border-t">
-                          <h1 onClick={() => removeFromCart(cartItem.id)}  className="text-[#0018A8] cursor-pointer">X REMOVE</h1>
-                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
           <div className="cart-footer pb-1 bg-[#F2F2F2] border-t absolute bottom-0 left-0 right-0 border-black ">
             <div className="flex p-1 justify-between ">

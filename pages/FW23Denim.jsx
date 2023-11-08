@@ -9,15 +9,17 @@ import Product from "@/components/Product";
 import SidebarModal from "@/components/SidebarModal";
 import HomeLink from "@/components/HomeLink";
 import MobileMenu from "@/components/MobileMenu";
+import { handleModal } from "@/redux/SidebarSlice";
+import { useDispatch } from "react-redux";
 
 
  
    
 
-function FW23Denim({removeFromCart}) {
+function FW23Denim() {
    const router = useRouter();
 
-    
+   const dispatch = useDispatch();
     const handleClick = () => {
         const newUrl = `/info/?id=${products[8].id}`;
         router.push(newUrl);
@@ -34,12 +36,24 @@ function FW23Denim({removeFromCart}) {
         }
         return [];
       });
+
+      function handleRemoveFromCart(productId) {
+        const updatedCart = cart.filter((item) => item.id !== productId);
+        setCart(updatedCart);
+    
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cart", JSON.stringify(updatedCart));
+        }
+      }
+
+      
+    
   return (
     
     <div>
       
       <MobileMenu/>
-      <SidebarModal cart={cart} />
+      <SidebarModal cart={cart} removeFromCart={handleRemoveFromCart}/>
       <Navbar cart={cart} />
       <SiteMenu />
       <div className="border-b">
@@ -99,7 +113,7 @@ function FW23Denim({removeFromCart}) {
           </div>
         </div>
         <div className="flex justify-center p-24">
-          <button className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">
+          <button  onClick={() => dispatch(handleModal(true))} className="bg-black text-white text-sm w-80 hover:bg-[#0018A8] h-14 p-3">
             CONTINUE TO CART
           </button>
         </div>

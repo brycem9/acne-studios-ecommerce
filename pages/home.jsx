@@ -13,10 +13,18 @@ export default function Landing() {
     }
     return [];
   });
+  function handleRemoveFromCart(productId) {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  }
   return (
     <div>
       <MobileMenu/>
-      <SidebarModal cart={cart} />
+      <SidebarModal cart={cart} removeFromCart={handleRemoveFromCart}/>
       <Navbar cart={cart}/>
       <div className="flex justify-center">
         
