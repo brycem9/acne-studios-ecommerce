@@ -118,7 +118,7 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
       })),
       mode: "payment",
       successUrl: "http://localhost:3000/success",
-      cancelUrl: "https://localhost:3000/cancel",
+      cancelUrl: "http://localhost:3000/FW23Denim",
     });
 
     if (error) {
