@@ -13,8 +13,8 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        success_url: `https://acne-studios-ecommerce.vercel.app/?success=true`,
+        cancel_url: `https://acne-studios-ecommerce.vercel.app/?canceled=true`,
       });
       res.redirect(303, session.url);
     } catch (err) {
