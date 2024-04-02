@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         ],
         mode: 'payment',
         success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/?success=true`,
-        cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/?canceled=true`,
+        cancel_url: `https://acne-studios-ecommerce.vercel.app/FW23Denim`,
       });
       res.redirect(303, session.url);
     } catch (err) {
