@@ -117,8 +117,8 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
         quantity: inputValues[cartItem.id] || 1,
       })),
       mode: "payment",
-      successUrl: "http://localhost:3000/success",
-      cancelUrl: "http://localhost:3000/FW23Denim",
+      successUrl: "https://acne-studios-ecommerce.vercel.app/success",
+      cancelUrl: "https://acne-studios-ecommerce.vercel.app/FW23Denim",
     });
 
     if (error) {
