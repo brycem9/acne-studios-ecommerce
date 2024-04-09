@@ -5,8 +5,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/acnecon.png" type="image/x-icon" />
-          <link rel="icon" href="/acnecon.png" type="image/x-icon" />
+          <link rel="shortcut icon" href="/acneconv5.png" type="image/x-icon" />
+          <link rel="icon" href="/acneconv5.png" type="image/x-icon" />
         </Head>
         <body>
           <Main />

@@ -155,7 +155,7 @@ function SidebarModal({ selectedProduct, cart, removeFromCart }) {
                 <h1>*EMPTY*</h1>
               </div>
             ) : (
-              <div className="cart__product--container max-h-[538px] bg-white overflow-y-scroll -mr-[4.5px]">
+              <div className="cart__product--container max-h-[529px] bg-white overflow-y-scroll -mr-[4.5px]">
                 {cart.map((cartItem) => {
                   const productId = cartItem.id;
                   const inputCount = inputValues[productId] || 1;
